@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { BottomNav } from '@/components/BottomNav';
 import { TopNav } from '@/components/TopNav';
+import { MobileHeader } from '@/components/MobileHeader';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
 
 export const metadata: Metadata = {
@@ -74,6 +75,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Al-Qur'an" />
       </head>
       <body>
+        <MobileHeader />
         <TopNav />
         {children}
         <BottomNav />

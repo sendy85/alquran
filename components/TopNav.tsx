@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from './Logo';
+import { HeaderControls } from './HeaderControls';
 
 export function TopNav() {
   const pathname = usePathname();
@@ -22,7 +23,7 @@ export function TopNav() {
         <Logo size={24} />
         Al-Qur'an
       </Link>
-      <div className="flex gap-6 ml-auto">
+      <div className="flex gap-6 ml-auto items-center">
         {navItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -37,6 +38,9 @@ export function TopNav() {
             </Link>
           );
         })}
+        <div className="pl-2 border-l border-border-subtle">
+          <HeaderControls />
+        </div>
       </div>
     </nav>
   );

@@ -24,10 +24,17 @@ const applyTheme = (theme: 'light' | 'dark' | 'system') => {
   if (theme === 'system') {
     effectiveTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
+  
   if (effectiveTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.style.colorScheme = 'dark';
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) metaThemeColor.setAttribute('content', '#121816');
   } else {
     document.documentElement.removeAttribute('data-theme');
+    document.documentElement.style.colorScheme = 'light';
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor) metaThemeColor.setAttribute('content', '#1B4332');
   }
 };
 
@@ -76,5 +83,19 @@ export function useSettings() {
     setSettings((prev) => ({ ...prev, ...newSettings }));
   };
 
-  return { settings, updateSettings, loaded };
+  const toggleTheme = () => {
+    setSettings((prev) => {
+      let nextTheme: 'light' | 'dark' | 'system' = 'light';
+      const current = prev.theme === 'system' 
+        ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        : prev.theme;
+        
+      if (current === 'light') nextTheme = 'dark';
+      else nextTheme = 'light';
+      
+      return { ...prev, theme: nextTheme };
+    });
+  };
+
+  return { settings, updateSettings, toggleTheme, loaded };
 }
