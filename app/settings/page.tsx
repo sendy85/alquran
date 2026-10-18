@@ -40,7 +40,7 @@ export default function SettingsPage() {
 
   if (!mounted || !loaded) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)' }} className="min-h-screen p-4 pt-5 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)' }} className="min-h-screen p-4 pt-4 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <div className="h-96 bg-surface-container-low rounded-md animate-pulse" />
         </div>
@@ -94,20 +94,20 @@ export default function SettingsPage() {
   ];
 
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-4 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
-        <header className="mb-6 mt-6">
+        <header className="mb-6 mt-4">
           <h1 className="text-3xl md:text-4xl font-serif-heading font-bold">Pengaturan</h1>
         </header>
 
         {/* Tab bar */}
-        <div className="mb-8 -mx-4 md:mx-0 px-4 md:px-0 overflow-x-auto md:overflow-x-visible md:flex md:gap-2 scroll-snap-type-x-mandatory">
-          <div className="flex gap-2 md:gap-0 md:flex-wrap">
+        <div className="mb-8 -mx-4 md:mx-0 px-4 md:px-0 overflow-x-auto md:overflow-x-visible">
+          <div className="flex gap-2 md:gap-2 md:flex-wrap min-w-max md:min-w-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => handleTabChange(tab.id)}
-                className={`px-4 py-3 text-sm font-medium rounded-md whitespace-nowrap transition scroll-snap-align-start ${
+                className={`px-4 py-3 text-sm font-medium rounded-md whitespace-nowrap transition ${
                   activeTab === tab.id
                     ? 'bg-primary text-primary-contrast'
                     : 'bg-surface-container-low text-text-secondary hover:bg-surface-container-lowest'
@@ -299,3 +299,4 @@ export default function SettingsPage() {
     </div>
   );
 }
+

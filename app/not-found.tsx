@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0 flex items-center justify-center">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-4 md:pt-20 md:pb-0 flex items-center justify-center">
       <div className="text-center px-4">
         <h1 className="text-6xl font-serif-heading font-bold mb-4">404</h1>
         <p className="text-2xl font-semibold mb-2">Halaman tidak ditemukan</p>
@@ -16,3 +16,4 @@ export default function NotFound() {
     </div>
   );
 }
+

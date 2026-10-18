@@ -16,17 +16,20 @@ export function BottomNav() {
   ];
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-border-subtle flex justify-around py-2 z-[50]" style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}>
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-border-subtle flex justify-around z-[50]" style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}>
       {navItems.map((item) => {
         const Icon = item.icon;
         const isActive = pathname === item.href;
         return (
-          <Link key={item.href} href={item.href} className="flex flex-col items-center justify-center w-16 h-16 text-xs gap-1">
+          <Link key={item.href} href={item.href} className="flex flex-col items-center justify-center flex-1 py-2 text-xs gap-1 relative">
             <Icon
               size={24}
               className={isActive ? 'text-primary' : 'text-text-tertiary'}
             />
             <span className={isActive ? 'text-primary font-medium' : 'text-text-tertiary'}>{item.label}</span>
+            {isActive && (
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
+            )}
           </Link>
         );
       })}

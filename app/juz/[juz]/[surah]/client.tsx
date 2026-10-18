@@ -167,7 +167,7 @@ export default function JuzSurahReadPageClient({
   }
 
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-4 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
         {loading ? (
           <div className="mt-8 space-y-4">

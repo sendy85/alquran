@@ -30,7 +30,7 @@ export default function HomePage() {
 
   if (error) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-4 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-red-600">Gagal memuat daftar surah. Coba refresh halaman.</p>
         </div>
@@ -39,7 +39,7 @@ export default function HomePage() {
   }
 
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-4 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
         <header className="mb-8 mt-6">
           <div className="flex items-center gap-3 md:gap-0">
@@ -135,4 +135,5 @@ export default function HomePage() {
     </div>
   );
 }
+
 
