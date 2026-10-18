@@ -46,7 +46,7 @@ export function InstallAppCard() {
     }
   };
 
-  const getGuideText = () => {
+  const getGuideText = React.useCallback(() => {
     if (typeof window !== 'undefined') {
       const ua = navigator.userAgent.toLowerCase();
       const isInAppBrowser = /fban|fbav|instagram|line|micromessenger|tiktok|bytedancewebview/.test(ua);
@@ -68,7 +68,7 @@ export function InstallAppCard() {
       default:
         return 'Buka menu browser Anda lalu pilih opsi \'Instal\' atau \'Tambahkan ke Layar Utama\'.';
     }
-  };
+  }, [guideType]);
 
   return (
     <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">

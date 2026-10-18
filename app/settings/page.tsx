@@ -7,6 +7,7 @@ import { useLastRead } from '@/hooks/useLastRead';
 import { ConfirmDialog } from '@/components/ConfirmDialog';
 import { Toast } from '@/components/Toast';
 import { InstallAppCard } from '@/components/InstallAppCard';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 const STORAGE_KEYS = ['alquran_settings', 'alquran_bookmarks', 'alquran_last_read'];
 
@@ -219,7 +220,9 @@ export default function SettingsPage() {
 
            {/* App Tab */}
            {activeTab === 'app' && (
-             <InstallAppCard />
+             <ErrorBoundary fallback={<div className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle text-sm text-text-secondary">Fitur pasang aplikasi sedang tidak tersedia. Coba muat ulang halaman.</div>}>
+               <InstallAppCard />
+             </ErrorBoundary>
            )}
 
           {/* Data Tab */}

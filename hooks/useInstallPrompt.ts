@@ -19,12 +19,15 @@ function getServerSnapshot(): InstallPromptStatus {
 export function useInstallPrompt(): InstallPromptStatus {
   const snapshot = useSyncExternalStore<InstallPromptStatus>(
     (onStoreChange) => {
-      const handleInstall = (type: 'ready' | 'installed') => {
+      const handleInstall = () => {
         onStoreChange();
       };
 
       if (typeof window !== 'undefined') {
-        window.__installPromptListeners?.push(handleInstall);
+        if (!window.__installPromptListeners) {
+          window.__installPromptListeners = [];
+        }
+        window.__installPromptListeners.push(handleInstall);
       }
 
       return () => {
@@ -45,7 +48,7 @@ export function useInstallPrompt(): InstallPromptStatus {
         (navigator as any).standalone === true;
 
       return {
-        isAvailable: window.__installPrompt !== null,
+        isAvailable: !!window.__installPrompt,
         isInstalled: isStandalone,
       };
     },
