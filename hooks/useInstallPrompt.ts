@@ -16,7 +16,7 @@ function getServerSnapshot(): InstallPromptStatus {
   return { isAvailable: false, isInstalled: false };
 }
 
-function useInstallPrompt(): InstallPromptStatus {
+export function useInstallPrompt(): InstallPromptStatus {
   const snapshot = useSyncExternalStore<InstallPromptStatus>(
     (onStoreChange) => {
       const handleInstall = (type: 'ready' | 'installed') => {
