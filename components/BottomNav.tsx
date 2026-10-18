@@ -21,12 +21,12 @@ export function BottomNav() {
         const Icon = item.icon;
         const isActive = pathname === item.href;
         return (
-          <Link key={item.href} href={item.href} className="flex flex-col items-center justify-center flex-1 py-2 text-xs gap-1 relative">
+          <Link key={item.href} href={item.href} className="flex flex-col items-center justify-center flex-1 py-2 relative" aria-label={item.label} title={item.label}>
             <Icon
               size={24}
               className={isActive ? 'text-primary' : 'text-text-tertiary'}
             />
-             <span className={`${isActive ? 'text-primary font-medium' : 'text-text-tertiary'} text-xs uppercase tracking-wider`} style={{ letterSpacing: '0.5px' }}>{item.label}</span>
+            <span className="sr-only">{item.label}</span>
             {isActive && (
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
             )}
