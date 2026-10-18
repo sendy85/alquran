@@ -1,0 +1,1397 @@
+[
+  {
+    "juz": 1,
+    "surahs": [
+      {
+        "surahNumber": 1,
+        "surahNameAr": "سُورَةُ ٱلْفَاتِحَةِ",
+        "surahNameLatin": "Al-Fatihah",
+        "juz": 1,
+        "ayatStart": 1,
+        "ayatEnd": 7,
+        "ayatCount": 7
+      },
+      {
+        "surahNumber": 2,
+        "surahNameAr": "سُورَةُ البَقَرَةِ",
+        "surahNameLatin": "Al-Baqarah",
+        "juz": 1,
+        "ayatStart": 1,
+        "ayatEnd": 141,
+        "ayatCount": 141
+      }
+    ],
+    "ayatCount": 148
+  },
+  {
+    "juz": 2,
+    "surahs": [
+      {
+        "surahNumber": 2,
+        "surahNameAr": "سُورَةُ البَقَرَةِ",
+        "surahNameLatin": "Al-Baqarah",
+        "juz": 2,
+        "ayatStart": 142,
+        "ayatEnd": 252,
+        "ayatCount": 111
+      }
+    ],
+    "ayatCount": 111
+  },
+  {
+    "juz": 3,
+    "surahs": [
+      {
+        "surahNumber": 2,
+        "surahNameAr": "سُورَةُ البَقَرَةِ",
+        "surahNameLatin": "Al-Baqarah",
+        "juz": 3,
+        "ayatStart": 253,
+        "ayatEnd": 286,
+        "ayatCount": 34
+      },
+      {
+        "surahNumber": 3,
+        "surahNameAr": "سُورَةُ آلِ عِمۡرَانَ",
+        "surahNameLatin": "Ali 'Imran",
+        "juz": 3,
+        "ayatStart": 1,
+        "ayatEnd": 92,
+        "ayatCount": 92
+      }
+    ],
+    "ayatCount": 126
+  },
+  {
+    "juz": 4,
+    "surahs": [
+      {
+        "surahNumber": 3,
+        "surahNameAr": "سُورَةُ آلِ عِمۡرَانَ",
+        "surahNameLatin": "Ali 'Imran",
+        "juz": 4,
+        "ayatStart": 93,
+        "ayatEnd": 200,
+        "ayatCount": 108
+      },
+      {
+        "surahNumber": 4,
+        "surahNameAr": "سُورَةُ النِّسَاءِ",
+        "surahNameLatin": "An-Nisa'",
+        "juz": 4,
+        "ayatStart": 1,
+        "ayatEnd": 23,
+        "ayatCount": 23
+      }
+    ],
+    "ayatCount": 131
+  },
+  {
+    "juz": 5,
+    "surahs": [
+      {
+        "surahNumber": 4,
+        "surahNameAr": "سُورَةُ النِّسَاءِ",
+        "surahNameLatin": "An-Nisa'",
+        "juz": 5,
+        "ayatStart": 24,
+        "ayatEnd": 147,
+        "ayatCount": 124
+      }
+    ],
+    "ayatCount": 124
+  },
+  {
+    "juz": 6,
+    "surahs": [
+      {
+        "surahNumber": 4,
+        "surahNameAr": "سُورَةُ النِّسَاءِ",
+        "surahNameLatin": "An-Nisa'",
+        "juz": 6,
+        "ayatStart": 148,
+        "ayatEnd": 176,
+        "ayatCount": 29
+      },
+      {
+        "surahNumber": 5,
+        "surahNameAr": "سُورَةُ المَائـِدَةِ",
+        "surahNameLatin": "Al-Ma'idah",
+        "juz": 6,
+        "ayatStart": 1,
+        "ayatEnd": 81,
+        "ayatCount": 81
+      }
+    ],
+    "ayatCount": 110
+  },
+  {
+    "juz": 7,
+    "surahs": [
+      {
+        "surahNumber": 5,
+        "surahNameAr": "سُورَةُ المَائـِدَةِ",
+        "surahNameLatin": "Al-Ma'idah",
+        "juz": 7,
+        "ayatStart": 82,
+        "ayatEnd": 120,
+        "ayatCount": 39
+      },
+      {
+        "surahNumber": 6,
+        "surahNameAr": "سُورَةُ الأَنۡعَامِ",
+        "surahNameLatin": "Al-An'am",
+        "juz": 7,
+        "ayatStart": 1,
+        "ayatEnd": 110,
+        "ayatCount": 110
+      }
+    ],
+    "ayatCount": 149
+  },
+  {
+    "juz": 8,
+    "surahs": [
+      {
+        "surahNumber": 6,
+        "surahNameAr": "سُورَةُ الأَنۡعَامِ",
+        "surahNameLatin": "Al-An'am",
+        "juz": 8,
+        "ayatStart": 111,
+        "ayatEnd": 165,
+        "ayatCount": 55
+      },
+      {
+        "surahNumber": 7,
+        "surahNameAr": "سُورَةُ الأَعۡرَافِ",
+        "surahNameLatin": "Al-A'raf",
+        "juz": 8,
+        "ayatStart": 1,
+        "ayatEnd": 87,
+        "ayatCount": 87
+      }
+    ],
+    "ayatCount": 142
+  },
+  {
+    "juz": 9,
+    "surahs": [
+      {
+        "surahNumber": 7,
+        "surahNameAr": "سُورَةُ الأَعۡرَافِ",
+        "surahNameLatin": "Al-A'raf",
+        "juz": 9,
+        "ayatStart": 88,
+        "ayatEnd": 206,
+        "ayatCount": 119
+      },
+      {
+        "surahNumber": 8,
+        "surahNameAr": "سُورَةُ الأَنفَالِ",
+        "surahNameLatin": "Al-Anfal",
+        "juz": 9,
+        "ayatStart": 1,
+        "ayatEnd": 40,
+        "ayatCount": 40
+      }
+    ],
+    "ayatCount": 159
+  },
+  {
+    "juz": 10,
+    "surahs": [
+      {
+        "surahNumber": 8,
+        "surahNameAr": "سُورَةُ الأَنفَالِ",
+        "surahNameLatin": "Al-Anfal",
+        "juz": 10,
+        "ayatStart": 41,
+        "ayatEnd": 75,
+        "ayatCount": 35
+      },
+      {
+        "surahNumber": 9,
+        "surahNameAr": "سُورَةُ التَّوۡبَةِ",
+        "surahNameLatin": "At-Taubah",
+        "juz": 10,
+        "ayatStart": 1,
+        "ayatEnd": 92,
+        "ayatCount": 92
+      }
+    ],
+    "ayatCount": 127
+  },
+  {
+    "juz": 11,
+    "surahs": [
+      {
+        "surahNumber": 9,
+        "surahNameAr": "سُورَةُ التَّوۡبَةِ",
+        "surahNameLatin": "At-Taubah",
+        "juz": 11,
+        "ayatStart": 93,
+        "ayatEnd": 129,
+        "ayatCount": 37
+      },
+      {
+        "surahNumber": 10,
+        "surahNameAr": "سُورَةُ يُونُسَ",
+        "surahNameLatin": "Yunus",
+        "juz": 11,
+        "ayatStart": 1,
+        "ayatEnd": 109,
+        "ayatCount": 109
+      },
+      {
+        "surahNumber": 11,
+        "surahNameAr": "سُورَةُ هُودٍ",
+        "surahNameLatin": "Hud",
+        "juz": 11,
+        "ayatStart": 1,
+        "ayatEnd": 5,
+        "ayatCount": 5
+      }
+    ],
+    "ayatCount": 151
+  },
+  {
+    "juz": 12,
+    "surahs": [
+      {
+        "surahNumber": 11,
+        "surahNameAr": "سُورَةُ هُودٍ",
+        "surahNameLatin": "Hud",
+        "juz": 12,
+        "ayatStart": 6,
+        "ayatEnd": 123,
+        "ayatCount": 118
+      },
+      {
+        "surahNumber": 12,
+        "surahNameAr": "سُورَةُ يُوسُفَ",
+        "surahNameLatin": "Yusuf",
+        "juz": 12,
+        "ayatStart": 1,
+        "ayatEnd": 52,
+        "ayatCount": 52
+      }
+    ],
+    "ayatCount": 170
+  },
+  {
+    "juz": 13,
+    "surahs": [
+      {
+        "surahNumber": 12,
+        "surahNameAr": "سُورَةُ يُوسُفَ",
+        "surahNameLatin": "Yusuf",
+        "juz": 13,
+        "ayatStart": 53,
+        "ayatEnd": 111,
+        "ayatCount": 59
+      },
+      {
+        "surahNumber": 13,
+        "surahNameAr": "سُورَةُ الرَّعۡدِ",
+        "surahNameLatin": "Ar-Ra'd",
+        "juz": 13,
+        "ayatStart": 1,
+        "ayatEnd": 43,
+        "ayatCount": 43
+      },
+      {
+        "surahNumber": 14,
+        "surahNameAr": "سُورَةُ إِبۡرَاهِيمَ",
+        "surahNameLatin": "Ibrahim",
+        "juz": 13,
+        "ayatStart": 1,
+        "ayatEnd": 52,
+        "ayatCount": 52
+      }
+    ],
+    "ayatCount": 154
+  },
+  {
+    "juz": 14,
+    "surahs": [
+      {
+        "surahNumber": 15,
+        "surahNameAr": "سُورَةُ الحِجۡرِ",
+        "surahNameLatin": "Al-Hijr",
+        "juz": 14,
+        "ayatStart": 1,
+        "ayatEnd": 99,
+        "ayatCount": 99
+      },
+      {
+        "surahNumber": 16,
+        "surahNameAr": "سُورَةُ النَّحۡلِ",
+        "surahNameLatin": "An-Nahl",
+        "juz": 14,
+        "ayatStart": 1,
+        "ayatEnd": 128,
+        "ayatCount": 128
+      }
+    ],
+    "ayatCount": 227
+  },
+  {
+    "juz": 15,
+    "surahs": [
+      {
+        "surahNumber": 17,
+        "surahNameAr": "سُورَةُ الإِسۡرَاءِ",
+        "surahNameLatin": "Al-Isra'",
+        "juz": 15,
+        "ayatStart": 1,
+        "ayatEnd": 111,
+        "ayatCount": 111
+      },
+      {
+        "surahNumber": 18,
+        "surahNameAr": "سُورَةُ الكَهۡفِ",
+        "surahNameLatin": "Al-Kahf",
+        "juz": 15,
+        "ayatStart": 1,
+        "ayatEnd": 74,
+        "ayatCount": 74
+      }
+    ],
+    "ayatCount": 185
+  },
+  {
+    "juz": 16,
+    "surahs": [
+      {
+        "surahNumber": 18,
+        "surahNameAr": "سُورَةُ الكَهۡفِ",
+        "surahNameLatin": "Al-Kahf",
+        "juz": 16,
+        "ayatStart": 75,
+        "ayatEnd": 110,
+        "ayatCount": 36
+      },
+      {
+        "surahNumber": 19,
+        "surahNameAr": "سُورَةُ مَرۡيَمَ",
+        "surahNameLatin": "Maryam",
+        "juz": 16,
+        "ayatStart": 1,
+        "ayatEnd": 98,
+        "ayatCount": 98
+      },
+      {
+        "surahNumber": 20,
+        "surahNameAr": "سُورَةُ طه",
+        "surahNameLatin": "Taha",
+        "juz": 16,
+        "ayatStart": 1,
+        "ayatEnd": 135,
+        "ayatCount": 135
+      }
+    ],
+    "ayatCount": 269
+  },
+  {
+    "juz": 17,
+    "surahs": [
+      {
+        "surahNumber": 21,
+        "surahNameAr": "سُورَةُ الأَنبِيَاءِ",
+        "surahNameLatin": "Al-Anbiya'",
+        "juz": 17,
+        "ayatStart": 1,
+        "ayatEnd": 112,
+        "ayatCount": 112
+      },
+      {
+        "surahNumber": 22,
+        "surahNameAr": "سُورَةُ الحَجِّ",
+        "surahNameLatin": "Al-Hajj",
+        "juz": 17,
+        "ayatStart": 1,
+        "ayatEnd": 78,
+        "ayatCount": 78
+      }
+    ],
+    "ayatCount": 190
+  },
+  {
+    "juz": 18,
+    "surahs": [
+      {
+        "surahNumber": 23,
+        "surahNameAr": "سُورَةُ المُؤۡمِنُونَ",
+        "surahNameLatin": "Al-Mu'minun",
+        "juz": 18,
+        "ayatStart": 1,
+        "ayatEnd": 118,
+        "ayatCount": 118
+      },
+      {
+        "surahNumber": 24,
+        "surahNameAr": "سُورَةُ النُّورِ",
+        "surahNameLatin": "An-Nur",
+        "juz": 18,
+        "ayatStart": 1,
+        "ayatEnd": 64,
+        "ayatCount": 64
+      },
+      {
+        "surahNumber": 25,
+        "surahNameAr": "سُورَةُ الفُرۡقَانِ",
+        "surahNameLatin": "Al-Furqan",
+        "juz": 18,
+        "ayatStart": 1,
+        "ayatEnd": 20,
+        "ayatCount": 20
+      }
+    ],
+    "ayatCount": 202
+  },
+  {
+    "juz": 19,
+    "surahs": [
+      {
+        "surahNumber": 25,
+        "surahNameAr": "سُورَةُ الفُرۡقَانِ",
+        "surahNameLatin": "Al-Furqan",
+        "juz": 19,
+        "ayatStart": 21,
+        "ayatEnd": 77,
+        "ayatCount": 57
+      },
+      {
+        "surahNumber": 26,
+        "surahNameAr": "سُورَةُ الشُّعَرَاءِ",
+        "surahNameLatin": "Asy-Syu'ara'",
+        "juz": 19,
+        "ayatStart": 1,
+        "ayatEnd": 227,
+        "ayatCount": 227
+      },
+      {
+        "surahNumber": 27,
+        "surahNameAr": "سُورَةُ النَّمۡلِ",
+        "surahNameLatin": "An-Naml",
+        "juz": 19,
+        "ayatStart": 1,
+        "ayatEnd": 55,
+        "ayatCount": 55
+      }
+    ],
+    "ayatCount": 339
+  },
+  {
+    "juz": 20,
+    "surahs": [
+      {
+        "surahNumber": 27,
+        "surahNameAr": "سُورَةُ النَّمۡلِ",
+        "surahNameLatin": "An-Naml",
+        "juz": 20,
+        "ayatStart": 56,
+        "ayatEnd": 93,
+        "ayatCount": 38
+      },
+      {
+        "surahNumber": 28,
+        "surahNameAr": "سُورَةُ القَصَصِ",
+        "surahNameLatin": "Al-Qasas",
+        "juz": 20,
+        "ayatStart": 1,
+        "ayatEnd": 88,
+        "ayatCount": 88
+      },
+      {
+        "surahNumber": 29,
+        "surahNameAr": "سُورَةُ العَنكَبُوتِ",
+        "surahNameLatin": "Al-'Ankabut",
+        "juz": 20,
+        "ayatStart": 1,
+        "ayatEnd": 45,
+        "ayatCount": 45
+      }
+    ],
+    "ayatCount": 171
+  },
+  {
+    "juz": 21,
+    "surahs": [
+      {
+        "surahNumber": 29,
+        "surahNameAr": "سُورَةُ العَنكَبُوتِ",
+        "surahNameLatin": "Al-'Ankabut",
+        "juz": 21,
+        "ayatStart": 46,
+        "ayatEnd": 69,
+        "ayatCount": 24
+      },
+      {
+        "surahNumber": 30,
+        "surahNameAr": "سُورَةُ الرُّومِ",
+        "surahNameLatin": "Ar-Rum",
+        "juz": 21,
+        "ayatStart": 1,
+        "ayatEnd": 60,
+        "ayatCount": 60
+      },
+      {
+        "surahNumber": 31,
+        "surahNameAr": "سُورَةُ لُقۡمَانَ",
+        "surahNameLatin": "Luqman",
+        "juz": 21,
+        "ayatStart": 1,
+        "ayatEnd": 34,
+        "ayatCount": 34
+      },
+      {
+        "surahNumber": 32,
+        "surahNameAr": "سُورَةُ السَّجۡدَةِ",
+        "surahNameLatin": "As-Sajdah",
+        "juz": 21,
+        "ayatStart": 1,
+        "ayatEnd": 30,
+        "ayatCount": 30
+      },
+      {
+        "surahNumber": 33,
+        "surahNameAr": "سُورَةُ الأَحۡزَابِ",
+        "surahNameLatin": "Al-Ahzab",
+        "juz": 21,
+        "ayatStart": 1,
+        "ayatEnd": 30,
+        "ayatCount": 30
+      }
+    ],
+    "ayatCount": 178
+  },
+  {
+    "juz": 22,
+    "surahs": [
+      {
+        "surahNumber": 33,
+        "surahNameAr": "سُورَةُ الأَحۡزَابِ",
+        "surahNameLatin": "Al-Ahzab",
+        "juz": 22,
+        "ayatStart": 31,
+        "ayatEnd": 73,
+        "ayatCount": 43
+      },
+      {
+        "surahNumber": 34,
+        "surahNameAr": "سُورَةُ سَبَإٍ",
+        "surahNameLatin": "Saba'",
+        "juz": 22,
+        "ayatStart": 1,
+        "ayatEnd": 54,
+        "ayatCount": 54
+      },
+      {
+        "surahNumber": 35,
+        "surahNameAr": "سُورَةُ فَاطِرٍ",
+        "surahNameLatin": "Fatir",
+        "juz": 22,
+        "ayatStart": 1,
+        "ayatEnd": 45,
+        "ayatCount": 45
+      },
+      {
+        "surahNumber": 36,
+        "surahNameAr": "سُورَةُ يسٓ",
+        "surahNameLatin": "Yasin",
+        "juz": 22,
+        "ayatStart": 1,
+        "ayatEnd": 27,
+        "ayatCount": 27
+      }
+    ],
+    "ayatCount": 169
+  },
+  {
+    "juz": 23,
+    "surahs": [
+      {
+        "surahNumber": 36,
+        "surahNameAr": "سُورَةُ يسٓ",
+        "surahNameLatin": "Yasin",
+        "juz": 23,
+        "ayatStart": 28,
+        "ayatEnd": 83,
+        "ayatCount": 56
+      },
+      {
+        "surahNumber": 37,
+        "surahNameAr": "سُورَةُ الصَّافَّاتِ",
+        "surahNameLatin": "As-Saffat",
+        "juz": 23,
+        "ayatStart": 1,
+        "ayatEnd": 182,
+        "ayatCount": 182
+      },
+      {
+        "surahNumber": 38,
+        "surahNameAr": "سُورَةُ صٓ",
+        "surahNameLatin": "Sad",
+        "juz": 23,
+        "ayatStart": 1,
+        "ayatEnd": 88,
+        "ayatCount": 88
+      },
+      {
+        "surahNumber": 39,
+        "surahNameAr": "سُورَةُ الزُّمَرِ",
+        "surahNameLatin": "Az-Zumar",
+        "juz": 23,
+        "ayatStart": 1,
+        "ayatEnd": 31,
+        "ayatCount": 31
+      }
+    ],
+    "ayatCount": 357
+  },
+  {
+    "juz": 24,
+    "surahs": [
+      {
+        "surahNumber": 39,
+        "surahNameAr": "سُورَةُ الزُّمَرِ",
+        "surahNameLatin": "Az-Zumar",
+        "juz": 24,
+        "ayatStart": 32,
+        "ayatEnd": 75,
+        "ayatCount": 44
+      },
+      {
+        "surahNumber": 40,
+        "surahNameAr": "سُورَةُ غَافِرٍ",
+        "surahNameLatin": "Ghafir",
+        "juz": 24,
+        "ayatStart": 1,
+        "ayatEnd": 85,
+        "ayatCount": 85
+      },
+      {
+        "surahNumber": 41,
+        "surahNameAr": "سُورَةُ فُصِّلَتۡ",
+        "surahNameLatin": "Fussilat",
+        "juz": 24,
+        "ayatStart": 1,
+        "ayatEnd": 46,
+        "ayatCount": 46
+      }
+    ],
+    "ayatCount": 175
+  },
+  {
+    "juz": 25,
+    "surahs": [
+      {
+        "surahNumber": 41,
+        "surahNameAr": "سُورَةُ فُصِّلَتۡ",
+        "surahNameLatin": "Fussilat",
+        "juz": 25,
+        "ayatStart": 47,
+        "ayatEnd": 54,
+        "ayatCount": 8
+      },
+      {
+        "surahNumber": 42,
+        "surahNameAr": "سُورَةُ الشُّورَىٰ",
+        "surahNameLatin": "Asy-Syura",
+        "juz": 25,
+        "ayatStart": 1,
+        "ayatEnd": 53,
+        "ayatCount": 53
+      },
+      {
+        "surahNumber": 43,
+        "surahNameAr": "سُورَةُ الزُّخۡرُفِ",
+        "surahNameLatin": "Az-Zukhruf",
+        "juz": 25,
+        "ayatStart": 1,
+        "ayatEnd": 89,
+        "ayatCount": 89
+      },
+      {
+        "surahNumber": 44,
+        "surahNameAr": "سُورَةُ الدُّخَانِ",
+        "surahNameLatin": "Ad-Dukhan",
+        "juz": 25,
+        "ayatStart": 1,
+        "ayatEnd": 59,
+        "ayatCount": 59
+      },
+      {
+        "surahNumber": 45,
+        "surahNameAr": "سُورَةُ الجَاثِيَةِ",
+        "surahNameLatin": "Al-Jasiyah",
+        "juz": 25,
+        "ayatStart": 1,
+        "ayatEnd": 37,
+        "ayatCount": 37
+      }
+    ],
+    "ayatCount": 246
+  },
+  {
+    "juz": 26,
+    "surahs": [
+      {
+        "surahNumber": 46,
+        "surahNameAr": "سُورَةُ الأَحۡقَافِ",
+        "surahNameLatin": "Al-Ahqaf",
+        "juz": 26,
+        "ayatStart": 1,
+        "ayatEnd": 35,
+        "ayatCount": 35
+      },
+      {
+        "surahNumber": 47,
+        "surahNameAr": "سُورَةُ مُحَمَّدٍ",
+        "surahNameLatin": "Muhammad",
+        "juz": 26,
+        "ayatStart": 1,
+        "ayatEnd": 38,
+        "ayatCount": 38
+      },
+      {
+        "surahNumber": 48,
+        "surahNameAr": "سُورَةُ الفَتۡحِ",
+        "surahNameLatin": "Al-Fath",
+        "juz": 26,
+        "ayatStart": 1,
+        "ayatEnd": 29,
+        "ayatCount": 29
+      },
+      {
+        "surahNumber": 49,
+        "surahNameAr": "سُورَةُ الحُجُرَاتِ",
+        "surahNameLatin": "Al-Hujurat",
+        "juz": 26,
+        "ayatStart": 1,
+        "ayatEnd": 18,
+        "ayatCount": 18
+      },
+      {
+        "surahNumber": 50,
+        "surahNameAr": "سُورَةُ قٓ",
+        "surahNameLatin": "Qaf",
+        "juz": 26,
+        "ayatStart": 1,
+        "ayatEnd": 45,
+        "ayatCount": 45
+      },
+      {
+        "surahNumber": 51,
+        "surahNameAr": "سُورَةُ الذَّارِيَاتِ",
+        "surahNameLatin": "Az-Zariyat",
+        "juz": 26,
+        "ayatStart": 1,
+        "ayatEnd": 30,
+        "ayatCount": 30
+      }
+    ],
+    "ayatCount": 195
+  },
+  {
+    "juz": 27,
+    "surahs": [
+      {
+        "surahNumber": 51,
+        "surahNameAr": "سُورَةُ الذَّارِيَاتِ",
+        "surahNameLatin": "Az-Zariyat",
+        "juz": 27,
+        "ayatStart": 31,
+        "ayatEnd": 60,
+        "ayatCount": 30
+      },
+      {
+        "surahNumber": 52,
+        "surahNameAr": "سُورَةُ الطُّورِ",
+        "surahNameLatin": "At-Tur",
+        "juz": 27,
+        "ayatStart": 1,
+        "ayatEnd": 49,
+        "ayatCount": 49
+      },
+      {
+        "surahNumber": 53,
+        "surahNameAr": "سُورَةُ النَّجۡمِ",
+        "surahNameLatin": "An-Najm",
+        "juz": 27,
+        "ayatStart": 1,
+        "ayatEnd": 62,
+        "ayatCount": 62
+      },
+      {
+        "surahNumber": 54,
+        "surahNameAr": "سُورَةُ القَمَرِ",
+        "surahNameLatin": "Al-Qamar",
+        "juz": 27,
+        "ayatStart": 1,
+        "ayatEnd": 55,
+        "ayatCount": 55
+      },
+      {
+        "surahNumber": 55,
+        "surahNameAr": "سُورَةُ الرَّحۡمَٰن",
+        "surahNameLatin": "Ar-Rahman",
+        "juz": 27,
+        "ayatStart": 1,
+        "ayatEnd": 78,
+        "ayatCount": 78
+      },
+      {
+        "surahNumber": 56,
+        "surahNameAr": "سُورَةُ الوَاقِعَةِ",
+        "surahNameLatin": "Al-Waqi'ah",
+        "juz": 27,
+        "ayatStart": 1,
+        "ayatEnd": 96,
+        "ayatCount": 96
+      },
+      {
+        "surahNumber": 57,
+        "surahNameAr": "سُورَةُ الحَدِيدِ",
+        "surahNameLatin": "Al-Hadid",
+        "juz": 27,
+        "ayatStart": 1,
+        "ayatEnd": 29,
+        "ayatCount": 29
+      }
+    ],
+    "ayatCount": 399
+  },
+  {
+    "juz": 28,
+    "surahs": [
+      {
+        "surahNumber": 58,
+        "surahNameAr": "سُورَةُ المُجَادلَةِ",
+        "surahNameLatin": "Al-Mujadilah",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 22,
+        "ayatCount": 22
+      },
+      {
+        "surahNumber": 59,
+        "surahNameAr": "سُورَةُ الحَشۡرِ",
+        "surahNameLatin": "Al-Hasyr",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 24,
+        "ayatCount": 24
+      },
+      {
+        "surahNumber": 60,
+        "surahNameAr": "سُورَةُ المُمۡتَحنَةِ",
+        "surahNameLatin": "Al-Mumtahanah",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 13,
+        "ayatCount": 13
+      },
+      {
+        "surahNumber": 61,
+        "surahNameAr": "سُورَةُ الصَّفِّ",
+        "surahNameLatin": "As-Saff",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 14,
+        "ayatCount": 14
+      },
+      {
+        "surahNumber": 62,
+        "surahNameAr": "سُورَةُ الجُمُعَةِ",
+        "surahNameLatin": "Al-Jumu'ah",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 11,
+        "ayatCount": 11
+      },
+      {
+        "surahNumber": 63,
+        "surahNameAr": "سُورَةُ المُنَافِقُونَ",
+        "surahNameLatin": "Al-Munafiqun",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 11,
+        "ayatCount": 11
+      },
+      {
+        "surahNumber": 64,
+        "surahNameAr": "سُورَةُ التَّغَابُنِ",
+        "surahNameLatin": "At-Tagabun",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 18,
+        "ayatCount": 18
+      },
+      {
+        "surahNumber": 65,
+        "surahNameAr": "سُورَةُ الطَّلَاقِ",
+        "surahNameLatin": "At-Talaq",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 12,
+        "ayatCount": 12
+      },
+      {
+        "surahNumber": 66,
+        "surahNameAr": "سُورَةُ التَّحۡرِيمِ",
+        "surahNameLatin": "At-Tahrim",
+        "juz": 28,
+        "ayatStart": 1,
+        "ayatEnd": 12,
+        "ayatCount": 12
+      }
+    ],
+    "ayatCount": 137
+  },
+  {
+    "juz": 29,
+    "surahs": [
+      {
+        "surahNumber": 67,
+        "surahNameAr": "سُورَةُ المُلۡكِ",
+        "surahNameLatin": "Al-Mulk",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 30,
+        "ayatCount": 30
+      },
+      {
+        "surahNumber": 68,
+        "surahNameAr": "سُورَةُ القَلَمِ",
+        "surahNameLatin": "Al-Qalam",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 52,
+        "ayatCount": 52
+      },
+      {
+        "surahNumber": 69,
+        "surahNameAr": "سُورَةُ الحَاقَّةِ",
+        "surahNameLatin": "Al-Haqqah",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 52,
+        "ayatCount": 52
+      },
+      {
+        "surahNumber": 70,
+        "surahNameAr": "سُورَةُ المَعَارِجِ",
+        "surahNameLatin": "Al-Ma'arij",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 44,
+        "ayatCount": 44
+      },
+      {
+        "surahNumber": 71,
+        "surahNameAr": "سُورَةُ نُوحٍ",
+        "surahNameLatin": "Nuh",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 28,
+        "ayatCount": 28
+      },
+      {
+        "surahNumber": 72,
+        "surahNameAr": "سُورَةُ الجِنِّ",
+        "surahNameLatin": "Al-Jinn",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 28,
+        "ayatCount": 28
+      },
+      {
+        "surahNumber": 73,
+        "surahNameAr": "سُورَةُ المُزَّمِّلِ",
+        "surahNameLatin": "Al-Muzzammil",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 20,
+        "ayatCount": 20
+      },
+      {
+        "surahNumber": 74,
+        "surahNameAr": "سُورَةُ المُدَّثِّرِ",
+        "surahNameLatin": "Al-Muddassir",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 56,
+        "ayatCount": 56
+      },
+      {
+        "surahNumber": 75,
+        "surahNameAr": "سُورَةُ القِيَامَةِ",
+        "surahNameLatin": "Al-Qiyamah",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 40,
+        "ayatCount": 40
+      },
+      {
+        "surahNumber": 76,
+        "surahNameAr": "سُورَةُ الإِنسَانِ",
+        "surahNameLatin": "Al-Insan",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 31,
+        "ayatCount": 31
+      },
+      {
+        "surahNumber": 77,
+        "surahNameAr": "سُورَةُ المُرۡسَلَاتِ",
+        "surahNameLatin": "Al-Mursalat",
+        "juz": 29,
+        "ayatStart": 1,
+        "ayatEnd": 50,
+        "ayatCount": 50
+      }
+    ],
+    "ayatCount": 431
+  },
+  {
+    "juz": 30,
+    "surahs": [
+      {
+        "surahNumber": 78,
+        "surahNameAr": "سُورَةُ النَّبَإِ",
+        "surahNameLatin": "An-Naba'",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 40,
+        "ayatCount": 40
+      },
+      {
+        "surahNumber": 79,
+        "surahNameAr": "سُورَةُ النَّازِعَاتِ",
+        "surahNameLatin": "An-Nazi'at",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 46,
+        "ayatCount": 46
+      },
+      {
+        "surahNumber": 80,
+        "surahNameAr": "سُورَةُ عَبَسَ",
+        "surahNameLatin": "'Abasa",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 42,
+        "ayatCount": 42
+      },
+      {
+        "surahNumber": 81,
+        "surahNameAr": "سُورَةُ التَّكۡوِيرِ",
+        "surahNameLatin": "At-Takwir",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 29,
+        "ayatCount": 29
+      },
+      {
+        "surahNumber": 82,
+        "surahNameAr": "سُورَةُ الانفِطَارِ",
+        "surahNameLatin": "Al-Infitar",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 19,
+        "ayatCount": 19
+      },
+      {
+        "surahNumber": 83,
+        "surahNameAr": "سُورَةُ المُطَفِّفِينَ",
+        "surahNameLatin": "Al-Mutaffifin",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 36,
+        "ayatCount": 36
+      },
+      {
+        "surahNumber": 84,
+        "surahNameAr": "سُورَةُ الانشِقَاقِ",
+        "surahNameLatin": "Al-Insyiqaq",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 25,
+        "ayatCount": 25
+      },
+      {
+        "surahNumber": 85,
+        "surahNameAr": "سُورَةُ البُرُوجِ",
+        "surahNameLatin": "Al-Buruj",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 22,
+        "ayatCount": 22
+      },
+      {
+        "surahNumber": 86,
+        "surahNameAr": "سُورَةُ الطَّارِقِ",
+        "surahNameLatin": "At-Tariq",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 17,
+        "ayatCount": 17
+      },
+      {
+        "surahNumber": 87,
+        "surahNameAr": "سُورَةُ الأَعۡلَىٰ",
+        "surahNameLatin": "Al-A'la",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 19,
+        "ayatCount": 19
+      },
+      {
+        "surahNumber": 88,
+        "surahNameAr": "سُورَةُ الغَاشِيَةِ",
+        "surahNameLatin": "Al-Gasyiyah",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 26,
+        "ayatCount": 26
+      },
+      {
+        "surahNumber": 89,
+        "surahNameAr": "سُورَةُ الفَجۡرِ",
+        "surahNameLatin": "Al-Fajr",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 30,
+        "ayatCount": 30
+      },
+      {
+        "surahNumber": 90,
+        "surahNameAr": "سُورَةُ البَلَدِ",
+        "surahNameLatin": "Al-Balad",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 20,
+        "ayatCount": 20
+      },
+      {
+        "surahNumber": 91,
+        "surahNameAr": "سُورَةُ الشَّمۡسِ",
+        "surahNameLatin": "Asy-Syams",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 15,
+        "ayatCount": 15
+      },
+      {
+        "surahNumber": 92,
+        "surahNameAr": "سُورَةُ اللَّيۡلِ",
+        "surahNameLatin": "Al-Lail",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 21,
+        "ayatCount": 21
+      },
+      {
+        "surahNumber": 93,
+        "surahNameAr": "سُورَةُ الضُّحَىٰ",
+        "surahNameLatin": "Ad-Duha",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 11,
+        "ayatCount": 11
+      },
+      {
+        "surahNumber": 94,
+        "surahNameAr": "سُورَةُ الشَّرۡحِ",
+        "surahNameLatin": "Al-Insyirah",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 8,
+        "ayatCount": 8
+      },
+      {
+        "surahNumber": 95,
+        "surahNameAr": "سُورَةُ التِّينِ",
+        "surahNameLatin": "At-Tin",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 8,
+        "ayatCount": 8
+      },
+      {
+        "surahNumber": 96,
+        "surahNameAr": "سُورَةُ العَلَقِ",
+        "surahNameLatin": "Al-'Alaq",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 19,
+        "ayatCount": 19
+      },
+      {
+        "surahNumber": 97,
+        "surahNameAr": "سُورَةُ القَدۡرِ",
+        "surahNameLatin": "Al-Qadr",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 5,
+        "ayatCount": 5
+      },
+      {
+        "surahNumber": 98,
+        "surahNameAr": "سُورَةُ البَيِّنَةِ",
+        "surahNameLatin": "Al-Bayyinah",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 8,
+        "ayatCount": 8
+      },
+      {
+        "surahNumber": 99,
+        "surahNameAr": "سُورَةُ الزَّلۡزَلَةِ",
+        "surahNameLatin": "Az-Zalzalah",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 8,
+        "ayatCount": 8
+      },
+      {
+        "surahNumber": 100,
+        "surahNameAr": "سُورَةُ العَادِيَاتِ",
+        "surahNameLatin": "Al-'Adiyat",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 11,
+        "ayatCount": 11
+      },
+      {
+        "surahNumber": 101,
+        "surahNameAr": "سُورَةُ القَارِعَةِ",
+        "surahNameLatin": "Al-Qari'ah",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 11,
+        "ayatCount": 11
+      },
+      {
+        "surahNumber": 102,
+        "surahNameAr": "سُورَةُ التَّكَاثُرِ",
+        "surahNameLatin": "At-Takasur",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 8,
+        "ayatCount": 8
+      },
+      {
+        "surahNumber": 103,
+        "surahNameAr": "سُورَةُ العَصۡرِ",
+        "surahNameLatin": "Al-'Asr",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 3,
+        "ayatCount": 3
+      },
+      {
+        "surahNumber": 104,
+        "surahNameAr": "سُورَةُ الهُمَزَةِ",
+        "surahNameLatin": "Al-Humazah",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 9,
+        "ayatCount": 9
+      },
+      {
+        "surahNumber": 105,
+        "surahNameAr": "سُورَةُ الفِيلِ",
+        "surahNameLatin": "Al-Fil",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 5,
+        "ayatCount": 5
+      },
+      {
+        "surahNumber": 106,
+        "surahNameAr": "سُورَةُ قُرَيۡشٍ",
+        "surahNameLatin": "Quraisy",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 4,
+        "ayatCount": 4
+      },
+      {
+        "surahNumber": 107,
+        "surahNameAr": "سُورَةُ المَاعُونِ",
+        "surahNameLatin": "Al-Ma'un",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 7,
+        "ayatCount": 7
+      },
+      {
+        "surahNumber": 108,
+        "surahNameAr": "سُورَةُ الكَوۡثَرِ",
+        "surahNameLatin": "Al-Kausar",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 3,
+        "ayatCount": 3
+      },
+      {
+        "surahNumber": 109,
+        "surahNameAr": "سُورَةُ الكَافِرُونَ",
+        "surahNameLatin": "Al-Kafirun",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 6,
+        "ayatCount": 6
+      },
+      {
+        "surahNumber": 110,
+        "surahNameAr": "سُورَةُ النَّصۡرِ",
+        "surahNameLatin": "An-Nasr",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 3,
+        "ayatCount": 3
+      },
+      {
+        "surahNumber": 111,
+        "surahNameAr": "سُورَةُ المَسَدِ",
+        "surahNameLatin": "Al-Lahab",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 5,
+        "ayatCount": 5
+      },
+      {
+        "surahNumber": 112,
+        "surahNameAr": "سُورَةُ الإِخۡلَاصِ",
+        "surahNameLatin": "Al-Ikhlas",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 4,
+        "ayatCount": 4
+      },
+      {
+        "surahNumber": 113,
+        "surahNameAr": "سُورَةُ الفَلَقِ",
+        "surahNameLatin": "Al-Falaq",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 5,
+        "ayatCount": 5
+      },
+      {
+        "surahNumber": 114,
+        "surahNameAr": "سُورَةُ النَّاسِ",
+        "surahNameLatin": "An-Nas",
+        "juz": 30,
+        "ayatStart": 1,
+        "ayatEnd": 6,
+        "ayatCount": 6
+      }
+    ],
+    "ayatCount": 564
+  }
+]

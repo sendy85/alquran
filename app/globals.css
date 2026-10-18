@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #FAF8F5;
+  --surface-container-low: #F3EFEA;
+  --surface-container-lowest: #FFFFFF;
+  --primary: #1B4332;
+  --primary-contrast: #FFFFFF;
+  --secondary-gold: #D4A373;
+  --text-primary: #1B261D;
+  --text-secondary: #4A584F;
+  --text-tertiary: #7D8D82;
+  --border-subtle: #E8E2D8;
+  --danger: #E53E3E;
+  --danger-hover: #C53030;
+  
+  /* Hero Card (Last Read) - Light Mode */
+  --hero-bg: #1B4332;
+  --hero-fg: #FFFFFF;
+  --hero-muted: #D1D9D5;
+  --hero-track: rgba(255, 255, 255, 0.2);
+  --hero-fill: #FFFFFF;
+  --hero-button-bg: #FFFFFF;
+  --hero-button-fg: #1B4332;
+}
+
+[data-theme="dark"] {
+  --surface: #121816;
+  --surface-container-low: #1A2420;
+  --surface-container-lowest: #212E29;
+  --primary: #52B788;
+  --primary-contrast: #121816;
+  --secondary-gold: #D4A373;
+  --text-primary: #F3EED9;
+  --text-secondary: #D1DCD5;
+  --text-tertiary: #9CB0A4;
+  --border-subtle: #2A3A33;
+  --danger: #FC8181;
+  --danger-hover: #F56565;
+  
+  /* Hero Card (Last Read) - Dark Mode */
+  --hero-bg: #1A2420;
+  --hero-fg: #F3EED9;
+  --hero-muted: #9CB0A4;
+  --hero-track: rgba(82, 183, 136, 0.15);
+  --hero-fill: #52B788;
+  --hero-button-bg: #52B788;
+  --hero-button-fg: #0E1412;
+}
+
+html {
+  color-scheme: light;
+  background-color: #F5F2EB;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  background-color: #0E1412;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}

@@ -1,0 +1,25 @@
+<svg
+  width="192"
+  height="192"
+  viewBox="0 0 192 192"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  {/* Background rounded square */}
+  <rect width="192" height="192" rx="48" fill="#1B4332" />
+
+  {/* Open book glyph - left page */}
+  <path
+    d="M 56 40 L 56 152 Q 56 159 63 159 L 88 159 L 88 40 Q 88 36 84 36 L 63 36 Q 56 36 56 40 Z"
+    fill="#F3EED9"
+  />
+
+  {/* Open book glyph - right page */}
+  <path
+    d="M 104 40 L 104 152 Q 104 159 111 159 L 136 159 L 136 40 Q 136 36 132 36 L 111 36 Q 104 36 104 40 Z"
+    fill="#F3EED9"
+  />
+
+  {/* Spine line in center */}
+  <line x1="96" y1="40" x2="96" y2="152" stroke="#1B4332" strokeWidth="4" opacity="0.2" />
+</svg>
