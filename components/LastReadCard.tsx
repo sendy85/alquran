@@ -31,20 +31,21 @@ export function LastReadCard({ lastRead, surahData, showEmpty = true }: LastRead
           color: 'var(--hero-fg)',
         }}
       >
-        {/* Pola geometris Islami tipis (SVG background) */}
+        {/* Full-coverage ornament pattern */}
         <svg
-          className="absolute inset-0 opacity-5"
+          className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none"
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
         >
           <defs>
-            <pattern id="islamic-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+            <pattern id="islamic-pattern-empty" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
               <circle cx="10" cy="10" r="1" fill="currentColor" />
               <path d="M10 0 L15 5 L10 10 L5 5 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
             </pattern>
           </defs>
-          <rect width="100" height="100" fill="url(#islamic-pattern)" />
+          <rect width="100" height="100" fill="url(#islamic-pattern-empty)" />
         </svg>
 
         <div className="relative z-10">
@@ -86,20 +87,21 @@ export function LastReadCard({ lastRead, surahData, showEmpty = true }: LastRead
         color: 'var(--hero-fg)',
       }}
     >
-      {/* Pola geometris Islami tipis di pojok kanan */}
+      {/* Full-coverage ornament pattern */}
       <svg
-        className="absolute top-0 right-0 w-32 h-32 opacity-5"
+        className="absolute inset-0 w-full h-full opacity-[0.06] pointer-events-none"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
       >
         <defs>
-          <pattern id="islamic-accent" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <pattern id="islamic-pattern-lastread" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
             <circle cx="10" cy="10" r="1" fill="currentColor" />
             <path d="M10 0 L15 5 L10 10 L5 5 Z" fill="none" stroke="currentColor" strokeWidth="0.5" />
           </pattern>
         </defs>
-        <rect width="100" height="100" fill="url(#islamic-accent)" />
+        <rect width="100" height="100" fill="url(#islamic-pattern-lastread)" />
       </svg>
 
       {/* Grid layout: desktop 2 kolom, mobile 1 kolom */}

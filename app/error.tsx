@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen pt-20 md:pt-20 pb-20 md:pb-0 flex items-center justify-center">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0 flex items-center justify-center">
       <div className="text-center px-4 max-w-md">
         <h1 className="text-4xl font-serif-heading font-bold mb-4">Terjadi Kesalahan</h1>
         <p className="text-text-secondary mb-3">Maaf, terjadi kesalahan saat memuat halaman.</p>

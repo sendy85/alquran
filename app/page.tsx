@@ -7,6 +7,7 @@ import { useSurahs } from '@/hooks/useSurahs';
 import { useLastRead } from '@/hooks/useLastRead';
 import { useSurahDetail } from '@/hooks/useSurahDetail';
 import { LastReadCard } from '@/components/LastReadCard';
+import { Logo } from '@/components/Logo';
 
 type Tab = 'surah' | 'juz';
 
@@ -29,7 +30,7 @@ export default function HomePage() {
 
   if (error) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-20 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-red-600">Gagal memuat daftar surah. Coba refresh halaman.</p>
         </div>
@@ -38,10 +39,15 @@ export default function HomePage() {
   }
 
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen pt-20 md:pt-20 pb-20 md:pb-0">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
         <header className="mb-8 mt-6">
-          <h1 className="text-3xl md:text-4xl font-serif-heading font-bold">Al-Qur'an Digital</h1>
+          <div className="flex items-center gap-3 md:gap-0">
+            <div className="md:hidden flex-shrink-0">
+              <Logo size={40} />
+            </div>
+            <h1 className="text-3xl md:text-4xl font-serif-heading font-bold">Al-Qur'an Digital</h1>
+          </div>
           <p className="text-text-secondary mt-2">Baca 114 Surah dengan teks Arab dan terjemahan Indonesia</p>
         </header>
 

@@ -2,7 +2,7 @@
 
 export default function AboutPage() {
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen pt-20 md:pt-20 pb-20 md:pb-0">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
         <header className="mb-8 mt-6">
           <h1 className="text-3xl md:text-4xl font-serif-heading font-bold">Tentang</h1>

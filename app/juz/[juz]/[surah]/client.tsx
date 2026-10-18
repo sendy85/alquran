@@ -148,7 +148,7 @@ export default function JuzSurahReadPageClient({
 
   if (error) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-20 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-red-600">Error: {error}</p>
         </div>
@@ -158,7 +158,7 @@ export default function JuzSurahReadPageClient({
 
   if (!loading && (!surah || !range)) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-20 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-text-secondary">Data tidak ditemukan</p>
         </div>
@@ -167,7 +167,7 @@ export default function JuzSurahReadPageClient({
   }
 
   return (
-    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen pt-20 md:pt-20 pb-20 md:pb-0">
+    <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
         {loading ? (
           <div className="mt-8 space-y-4">
@@ -177,7 +177,7 @@ export default function JuzSurahReadPageClient({
           </div>
         ) : surah && range ? (
           <>
-            <header className="sticky top-20 md:top-16 bg-surface z-40 py-4 border-b border-border-subtle mb-6">
+            <header className="relative md:sticky md:top-16 bg-surface z-40 py-4 border-b border-border-subtle mb-6">
               <div className="flex items-center justify-between gap-2 mb-3">
                 <Link
                   href={`/juz/${juzNum}`}
@@ -234,7 +234,7 @@ export default function JuzSurahReadPageClient({
               {displayedAyat.map((ayat: any, idx: number) => (
                 <div key={idx} id={`ayat-${ayat.nomorAyat}`} className="pb-6 border-b border-border-subtle">
                   <div className="flex items-start gap-3 mb-3">
-                    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-secondary-gold text-primary rounded-full text-xs font-medium">
+                    <span className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-primary text-primary-contrast rounded-full text-xs font-medium">
                       {ayat.nomorAyat}
                     </span>
                     <p
