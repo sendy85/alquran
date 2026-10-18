@@ -44,6 +44,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "fetch-data": "npx tsx scripts/fetch-data.ts",
     "generate-juz-map": "npx tsx scripts/generate-juz-map.ts",
     "test": "echo \"Error: no test specified\" && exit 1"

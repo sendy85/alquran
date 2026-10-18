@@ -20,8 +20,18 @@ export class ErrorBoundary extends React.Component<
   }
 
   render() {
-    if (this.hasError) {
-      return this.props.fallback || <div className="p-4 text-sm text-danger">Fitur sedang tidak tersedia. Coba muat ulang halaman.</div>;
+    if (this.state.hasError) {
+      return this.props.fallback || (
+        <div className="p-4 text-sm text-red-500">
+          Fitur sedang tidak tersedia. Coba muat ulang halaman.
+          <button 
+            className="block mt-2 underline" 
+            onClick={() => this.setState({ hasError: false })}
+          >
+            Coba Lagi
+          </button>
+        </div>
+      );
     }
     return this.props.children;
   }

@@ -128,6 +128,24 @@ npm run start
 
 ## 🚀 Quick Start
 
+### Sebelum push ke GitHub
+1. Hentikan `npm run dev` jika sedang berjalan.
+2. Jalankan pemeriksaan tipe:
+   ```bash
+   npm run typecheck
+   ```
+3. Jalankan build produksi sampai bersih:
+   ```bash
+   npm run build
+   ```
+4. Pastikan build sukses ("Compiled successfully"), baru lakukan:
+   ```bash
+   git add .
+   git commit -m "Pesan commit"
+   git push origin main
+   ```
+   *(Catatan: Deployment Vercel yang gagal tidak akan mengubah situs live yang sedang berjalan)*
+
 ### Prasyarat
 - Node.js >= 18.x
 - npm atau yarn
