@@ -21,6 +21,7 @@ export function TopNav() {
     <nav className="hidden md:flex sticky top-0 bg-surface-lowest border-b border-border-subtle px-8 h-16 items-center gap-8 z-50 overflow-x-auto">
       <Link href="/" className="font-serif-heading font-bold text-xl text-primary flex-shrink-0 flex items-center gap-2" aria-label="Beranda">
         <Logo size={28} />
+        <span>Al-Qur&apos;an</span>
       </Link>
       <div className="flex gap-6 ml-auto items-center">
         {navItems.map((item) => {
@@ -29,13 +30,12 @@ export function TopNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`transition flex-shrink-0 ${
-                isActive ? 'text-primary' : 'text-text-secondary hover:text-primary'
+              className={`transition flex-shrink-0 font-medium text-sm tracking-wide uppercase min-h-[44px] flex items-center ${
+                isActive ? 'text-primary border-b-2 border-primary' : 'text-text-secondary hover:text-primary'
               }`}
-              aria-label={item.label}
-              title={item.label}
+              aria-current={isActive ? 'page' : undefined}
             >
-              <span className="sr-only">{item.label}</span>
+              {item.label}
             </Link>
           );
         })}
