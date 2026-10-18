@@ -66,22 +66,24 @@ export default function HomePage() {
 
         <LastReadCard lastRead={lastRead} surahData={lastReadSurah} showEmpty={true} />
 
-        <div className="flex gap-4 mb-8 border-b border-border-subtle">
+        <div className="flex gap-4 mb-8 border-b border-border-subtle h-11 items-center">
           <button
             onClick={() => setTab('surah')}
-            className={`pb-3 font-medium text-sm transition ${
-              tab === 'surah' ? 'text-primary border-b-2 border-primary -mb-1' : 'text-text-secondary'
+            className={`pb-0.5 font-medium text-sm uppercase tracking-wider transition ${
+              tab === 'surah' ? 'text-primary border-b-2 border-primary' : 'text-text-secondary'
             }`}
+            style={{ letterSpacing: '0.5px' }}
           >
-            Surah ({filteredSurahs.length})
+            SURAH ({filteredSurahs.length})
           </button>
           <button
             onClick={() => setTab('juz')}
-            className={`pb-3 font-medium text-sm transition ${
-              tab === 'juz' ? 'text-primary border-b-2 border-primary -mb-1' : 'text-text-secondary'
+            className={`pb-0.5 font-medium text-sm uppercase tracking-wider transition ${
+              tab === 'juz' ? 'text-primary border-b-2 border-primary' : 'text-text-secondary'
             }`}
+            style={{ letterSpacing: '0.5px' }}
           >
-            Juz (30)
+            JUZ (30)
           </button>
         </div>
 
@@ -93,23 +95,25 @@ export default function HomePage() {
               ))
             ) : filteredSurahs.length > 0 ? (
               filteredSurahs.map((surah: any) => (
-                <Link
-                  key={surah.nomor}
-                  href={`/surah/${surah.nomor}`}
-                  className="p-4 bg-surface-container-lowest rounded-md border border-border-subtle hover:border-primary hover:shadow-subtle transition cursor-pointer"
-                >
-                  <div className="flex justify-between items-start gap-4">
-                    <div className="flex-1">
-                      <p className="font-semibold text-primary">{surah.namaLatin}</p>
-                      <p className="text-sm text-text-secondary">{surah.jumlahAyat} Ayat • {surah.tempatTurun}</p>
-                      <p className="text-text-tertiary text-sm mt-1">{surah.arti}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="font-arabic text-2xl text-text-primary">{surah.nama}</p>
-                      <p className="text-xs text-text-tertiary mt-1">#{surah.nomor}</p>
-                    </div>
-                  </div>
-                </Link>
+               <Link
+                   key={surah.nomor}
+                   href={`/surah/${surah.nomor}`}
+                   className="p-4 bg-surface-container-lowest rounded-md border border-border-subtle hover:border-primary hover:shadow-subtle transition cursor-pointer flex items-start gap-4"
+                 >
+                   <div className="flex-shrink-0">
+                     <div className="w-12 h-12 rounded-full bg-primary text-primary-contrast flex items-center justify-center font-medium text-sm leading-none">
+                       {surah.nomor}
+                     </div>
+                   </div>
+                   <div className="flex-1 min-w-0">
+                     <p className="font-semibold text-primary">{surah.namaLatin}</p>
+                     <p className="text-sm text-text-secondary">{surah.jumlahAyat} Ayat • {surah.tempatTurun === 'Mekah' ? 'Makkiyah' : surah.tempatTurun === 'Madinah' ? 'Madaniyah' : surah.tempatTurun}</p>
+                     <p className="text-text-tertiary text-sm mt-1">{surah.arti}</p>
+                   </div>
+                   <div className="text-right flex-shrink-0">
+                     <p className="font-arabic text-2xl text-text-primary">{surah.nama}</p>
+                   </div>
+                 </Link>
               ))
             ) : (
               <p className="text-text-secondary">Tidak ada surah yang cocok.</p>

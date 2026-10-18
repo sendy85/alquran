@@ -26,7 +26,7 @@ export function BottomNav() {
               size={24}
               className={isActive ? 'text-primary' : 'text-text-tertiary'}
             />
-            <span className={isActive ? 'text-primary font-medium' : 'text-text-tertiary'}>{item.label}</span>
+             <span className={`${isActive ? 'text-primary font-medium' : 'text-text-tertiary'} text-xs uppercase tracking-wider`} style={{ letterSpacing: '0.5px' }}>{item.label}</span>
             {isActive && (
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-primary rounded-full" />
             )}

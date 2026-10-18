@@ -1,9 +1,30 @@
 import type { Metadata, Viewport } from 'next';
+import { Amiri, Inter, Newsreader } from 'next/font/google';
 import './globals.css';
 import { BottomNav } from '@/components/BottomNav';
 import { TopNav } from '@/components/TopNav';
 import { FloatingThemeButton } from '@/components/FloatingThemeButton';
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister';
+
+const amiri = Amiri({
+  subsets: ['arabic', 'latin'],
+  weight: ['400', '700'],
+  variable: '--font-amiri',
+  display: 'swap',
+});
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-newsreader',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Al-Qur\'an Digital',
@@ -82,15 +103,12 @@ export default function RootLayout({
         />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600&family=Newsreader:wght@400;600&display=swap" rel="stylesheet" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Al-Qur'an" />
       </head>
-      <body>
+      <body className={`${inter.variable} ${newsreader.variable} ${amiri.variable} font-sans`}>
         <TopNav />
         {children}
         <FloatingThemeButton />

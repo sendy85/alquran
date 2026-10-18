@@ -30,9 +30,10 @@ export function TopNav() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition flex-shrink-0 ${
+              className={`text-sm font-medium transition flex-shrink-0 uppercase tracking-wider ${
                 isActive ? 'text-primary border-b-2 border-primary' : 'text-text-secondary hover:text-primary'
               }`}
+              style={{ letterSpacing: '0.5px' }}
             >
               {item.label}
             </Link>

@@ -23,10 +23,10 @@ module.exports = {
         danger: 'var(--danger)',
       },
       fontFamily: {
-        'arabic': ['Amiri', 'Scheherazade New', 'Noto Naskh Arabic', 'serif'],
-        'serif-heading': ['Newsreader', 'Playfair Display', 'serif'],
-        'sans': ['Inter', 'sans-serif'],
-        'sans-secondary': ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        'arabic': ['var(--font-amiri)', 'Amiri', 'Scheherazade New', 'Noto Naskh Arabic', 'serif'],
+        'serif-heading': ['var(--font-newsreader)', 'Newsreader', 'Playfair Display', 'serif'],
+        'sans': ['var(--font-inter)', 'Inter', 'sans-serif'],
+        'sans-secondary': ['var(--font-inter)', 'Plus Jakarta Sans', 'Inter', 'sans-serif'],
       },
       fontSize: {
         'arabic-mobile': '32px',
