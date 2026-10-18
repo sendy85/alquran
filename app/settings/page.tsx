@@ -218,12 +218,11 @@ export default function SettingsPage() {
             </section>
           )}
 
-           {/* App Tab */}
-           {activeTab === 'app' && (
-             <ErrorBoundary fallback={<div className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle text-sm text-text-secondary">Fitur pasang aplikasi sedang tidak tersedia. Coba muat ulang halaman.</div>}>
-               <InstallAppCard />
-             </ErrorBoundary>
-           )}
+            {/* App Tab */}
+            {activeTab === 'app' && (
+              <InstallAppCard />
+            )}
+
 
           {/* Data Tab */}
           {activeTab === 'data' && (
