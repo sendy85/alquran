@@ -3,18 +3,24 @@
 import React, { useEffect, useState } from 'react';
 import { Toast } from './Toast';
 import { useInstallPrompt, useInstallPromptActions } from '@/hooks/useInstallPrompt';
+import { APK_URL, APK_FILENAME } from '@/lib/apkConfig';
 
 export function InstallAppCard() {
   const [mounted, setMounted] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
   const [guideType, setGuideType] = useState<'ios-safari' | 'ios-other' | 'android' | 'desktop' | 'other'>('other');
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const [apkValid, setApkValid] = useState<boolean | null>(null);
   
   const { isAvailable, isInstalled } = useInstallPrompt();
   const { triggerInstall } = useInstallPromptActions();
 
   useEffect(() => {
     setMounted(true);
+
+    fetch(APK_URL, { method: 'HEAD' })
+      .then(res => setApkValid(res.ok && res.headers.get('Content-Type') !== 'text/html'))
+      .catch(() => setApkValid(false));
 
     if (typeof window !== 'undefined') {
       const ua = navigator.userAgent.toLowerCase();
@@ -72,32 +78,61 @@ export function InstallAppCard() {
 
   return (
     <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-      <h2 className="text-xl font-semibold mb-3">Pasang Sebagai Aplikasi</h2>
-      <p className="text-sm text-text-secondary leading-relaxed mb-6">
-        Pasang Al-Qur'an Digital di layar utama HP atau komputer Anda agar bisa dibuka seperti aplikasi biasa. Halaman yang pernah dibuka tetap bisa dibaca tanpa internet. Tidak perlu lewat toko aplikasi.
-      </p>
-
-      {mounted && isInstalled ? (
+      <h2 className="text-xl font-semibold mb-3">Pasang Aplikasi</h2>
+      
+      {mounted && (typeof window !== 'undefined' && (window.matchMedia("(display-mode: standalone)").matches || (navigator as any).standalone)) ? (
         <p className="text-sm text-text-secondary font-medium py-2">
           Aplikasi sudah terpasang di perangkat ini.
         </p>
       ) : (
-        <div className="space-y-4">
-          <button
-            onClick={handleInstallClick}
-            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2"
-          >
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-              <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9 4v-2h-2v2H5v-2H3v2a2 2 0 002 2h14a2 2 0 002-2z" />
-            </svg>
-            Pasang Aplikasi
-          </button>
+        <div className="space-y-6">
+          <div className="space-y-4">
+            <h3 className="font-medium">Unduh APK (Android)</h3>
+            {apkValid === false ? (
+              <p className="text-sm text-danger">APK belum tersedia, coba lagi nanti.</p>
+            ) : (
+              <a
+                href={APK_URL}
+                download={APK_FILENAME}
+                className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2"
+              >
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+                </svg>
+                Unduh APK
+              </a>
+            )}
+            <p className="text-sm text-text-secondary">
+              Setelah terunduh, buka file APK. Jika diminta, izinkan 'Instal dari sumber ini / sumber tidak dikenal' di pengaturan Android, lalu pasang.
+            </p>
+          </div>
 
-          {mounted && showGuide && (
-            <div className="p-4 bg-surface rounded-md border border-border-subtle text-sm text-text-secondary leading-relaxed">
-              {getGuideText()}
-            </div>
-          )}
+          <div className="border-t border-border-subtle pt-6">
+            <h3 className="font-medium mb-4">Pasang lewat Browser (PWA)</h3>
+            {isInstalled ? (
+              <p className="text-sm text-text-secondary font-medium py-2">
+                Aplikasi sudah terpasang di perangkat ini.
+              </p>
+            ) : (
+              <div className="space-y-4">
+                <button
+                  onClick={handleInstallClick}
+                  className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2"
+                >
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9 4v-2h-2v2H5v-2H3v2a2 2 0 002 2h14a2 2 0 002-2z" />
+                  </svg>
+                  Pasang Aplikasi
+                </button>
+
+                {mounted && showGuide && (
+                  <div className="p-4 bg-surface rounded-md border border-border-subtle text-sm text-text-secondary leading-relaxed">
+                    {getGuideText()}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
