@@ -2,10 +2,21 @@
 
 import { useState, useEffect } from 'react';
 import { useSettings } from '@/hooks/useSettings';
+import { useBookmarks } from '@/hooks/useBookmarks';
+import { useLastRead } from '@/hooks/useLastRead';
+import { ConfirmDialog } from '@/components/ConfirmDialog';
+import { Toast } from '@/components/Toast';
+
+const STORAGE_KEYS = ['alquran_settings', 'alquran_bookmarks', 'alquran_last_read'];
 
 export default function SettingsPage() {
   const { settings, updateSettings, loaded } = useSettings();
+  const { bookmarks } = useBookmarks();
+  const { lastRead } = useLastRead();
   const [mounted, setMounted] = useState(false);
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -20,6 +31,48 @@ export default function SettingsPage() {
       </div>
     );
   }
+
+  const handleDeleteAllData = async () => {
+    setIsDeleting(true);
+    try {
+      // Hapus hanya kunci aplikasi ini
+      STORAGE_KEYS.forEach((key) => {
+        try {
+          localStorage.removeItem(key);
+        } catch (err) {
+          console.error(`Error removing ${key}:`, err);
+        }
+      });
+
+      // Tunggu sebentar agar DOM update
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      // Reset ke state awal tanpa reload manual
+      updateSettings({
+        arabicFontSize: 32,
+        translationFontSize: 15,
+        showTranslation: true,
+        showTransliteration: false,
+        theme: 'light',
+        autoOpenLastRead: false,
+      });
+
+      setShowConfirmDialog(false);
+      setToast({ message: 'Data berhasil dihapus.', type: 'success' });
+
+      // Force re-render dengan reset tema
+      if (typeof window !== 'undefined') {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    } catch (err) {
+      console.error('Delete error:', err);
+      setToast({ message: 'Data tidak bisa dihapus saat ini. Coba muat ulang halaman.', type: 'error' });
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const bookmarkCount = bookmarks?.length || 0;
 
   return (
     <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
@@ -150,26 +203,43 @@ export default function SettingsPage() {
              </div>
           </section>
 
-          <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-            <h2 className="text-xl font-semibold mb-4">Tentang & Penyimpanan</h2>
-            <p className="text-sm text-text-secondary mb-3">
-              Semua pengaturan dan bookmark disimpan secara lokal di perangkat Anda menggunakan localStorage. Data tidak dikirim ke server mana pun.
-            </p>
-            <button
-              onClick={() => {
-                if (confirm('Hapus semua data lokal? Tindakan ini tidak dapat dibatalkan.')) {
-                  localStorage.clear();
-                  alert('Semua data telah dihapus. Silakan refresh halaman.');
-                }
-              }}
-              className="px-4 py-2 bg-danger hover:opacity-90 transition text-white rounded-md text-sm font-medium"
-              style={{ backgroundColor: 'var(--danger)' }}
-            >
-              Hapus Semua Data
-            </button>
-          </section>
+           <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
+             <h2 className="text-xl font-semibold mb-4">Tentang & Penyimpanan</h2>
+             <p className="text-sm text-text-secondary mb-3">
+               Semua pengaturan dan bookmark disimpan secara lokal di perangkat Anda menggunakan localStorage. Data tidak dikirim ke server mana pun.
+             </p>
+             <button
+               onClick={() => setShowConfirmDialog(true)}
+               disabled={isDeleting}
+               className="px-4 py-2 bg-danger hover:opacity-90 transition text-white rounded-md text-sm font-medium disabled:opacity-50"
+               style={{ backgroundColor: 'var(--danger)' }}
+             >
+               {isDeleting ? 'Menghapus...' : 'Hapus Semua Data'}
+             </button>
+           </section>
         </div>
       </div>
+
+      <ConfirmDialog
+        isOpen={showConfirmDialog}
+        title="Hapus semua data?"
+        message="Semua pengaturan tampilan, penanda ayat (bookmark), dan bacaan terakhir di perangkat ini akan dihapus. Tindakan ini tidak bisa dibatalkan."
+        bookmarkCount={bookmarkCount}
+        cancelLabel="Batal"
+        confirmLabel="Ya, Hapus Semua"
+        onCancel={() => setShowConfirmDialog(false)}
+        onConfirm={handleDeleteAllData}
+        isDangerous
+      />
+
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          duration={4000}
+          onClose={() => setToast(null)}
+        />
+      )}
     </div>
   );
 }
