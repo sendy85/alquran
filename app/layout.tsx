@@ -72,11 +72,11 @@ export default function RootLayout({
               window.addEventListener('beforeinstallprompt', function(e) {
                 e.preventDefault();
                 window.__installPrompt = e;
-                window.__installPromptListeners.forEach(cb => cb('ready'));
+                window.__installPromptListeners.forEach(cb => cb());
               });
               window.addEventListener('appinstalled', function() {
                 window.__installPrompt = null;
-                window.__installPromptListeners.forEach(cb => cb('installed'));
+                window.__installPromptListeners.forEach(cb => cb());
               });
             `,
           }}

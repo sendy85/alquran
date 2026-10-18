@@ -20,17 +20,13 @@ export function useInstallPrompt(): InstallPromptStatus {
   return useSyncExternalStore<InstallPromptStatus>(
     (onStoreChange) => {
       const handleEvent = () => onStoreChange();
-      window.addEventListener('beforeinstallprompt', handleEvent);
-      window.addEventListener('appinstalled', handleEvent);
       
       if (!window.__installPromptListeners) window.__installPromptListeners = [];
-      window.__installPromptListeners.push(onStoreChange);
+      window.__installPromptListeners.push(handleEvent);
 
       return () => {
-        window.removeEventListener('beforeinstallprompt', handleEvent);
-        window.removeEventListener('appinstalled', handleEvent);
         if (window.__installPromptListeners) {
-          window.__installPromptListeners = window.__installPromptListeners.filter(cb => cb !== onStoreChange);
+          window.__installPromptListeners = window.__installPromptListeners.filter(cb => cb !== handleEvent);
         }
       };
     },
