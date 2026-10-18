@@ -48,7 +48,7 @@ export function InstallAppCard() {
         setShowGuide(true);
       }
     } else {
-      setShowGuide(true);
+      setShowGuide((prev) => !prev);
     }
   };
 

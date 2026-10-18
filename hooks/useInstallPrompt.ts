@@ -17,36 +17,26 @@ function getServerSnapshot(): InstallPromptStatus {
 }
 
 export function useInstallPrompt(): InstallPromptStatus {
-  const snapshot = useSyncExternalStore<InstallPromptStatus>(
+  return useSyncExternalStore<InstallPromptStatus>(
     (onStoreChange) => {
-      const handleInstall = () => {
-        onStoreChange();
-      };
-
-      if (typeof window !== 'undefined') {
-        if (!window.__installPromptListeners) {
-          window.__installPromptListeners = [];
-        }
-        window.__installPromptListeners.push(handleInstall);
-      }
+      const handleEvent = () => onStoreChange();
+      window.addEventListener('beforeinstallprompt', handleEvent);
+      window.addEventListener('appinstalled', handleEvent);
+      
+      if (!window.__installPromptListeners) window.__installPromptListeners = [];
+      window.__installPromptListeners.push(onStoreChange);
 
       return () => {
-        if (typeof window !== 'undefined' && window.__installPromptListeners) {
-          window.__installPromptListeners = window.__installPromptListeners.filter(
-            (cb) => cb !== handleInstall
-          );
+        window.removeEventListener('beforeinstallprompt', handleEvent);
+        window.removeEventListener('appinstalled', handleEvent);
+        if (window.__installPromptListeners) {
+          window.__installPromptListeners = window.__installPromptListeners.filter(cb => cb !== onStoreChange);
         }
       };
     },
     () => {
-      if (typeof window === 'undefined') {
-        return { isAvailable: false, isInstalled: false };
-      }
-
-      const isStandalone =
-        window.matchMedia('(display-mode: standalone)').matches ||
-        (navigator as any).standalone === true;
-
+      if (typeof window === 'undefined') return { isAvailable: false, isInstalled: false };
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone === true;
       return {
         isAvailable: !!window.__installPrompt,
         isInstalled: isStandalone,
@@ -54,8 +44,6 @@ export function useInstallPrompt(): InstallPromptStatus {
     },
     () => ({ isAvailable: false, isInstalled: false })
   );
-
-  return snapshot;
 }
 
 export function useInstallPromptActions() {
