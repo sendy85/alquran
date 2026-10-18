@@ -96,7 +96,7 @@ export default function SurahPage({ params }: { params: { nomor: string } }) {
 
   if (error) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-4 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-red-600">Gagal memuat surah. Coba refresh halaman.</p>
         </div>
@@ -106,7 +106,7 @@ export default function SurahPage({ params }: { params: { nomor: string } }) {
 
   if (!loading && !surah) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-4 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-text-secondary">Surah tidak ditemukan.</p>
         </div>

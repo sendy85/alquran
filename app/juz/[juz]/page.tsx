@@ -42,7 +42,7 @@ export default function JuzSurahSelectPage({ params }: { params: { juz: string }
 
   if (error) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-4 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-red-600">Error: {error}</p>
         </div>
@@ -52,7 +52,7 @@ export default function JuzSurahSelectPage({ params }: { params: { juz: string }
 
   if (!juzData) {
     return (
-      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-5 md:pt-20">
+      <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }} className="min-h-screen p-4 pt-4 md:pt-20">
         <div className="max-w-reading-container mx-auto">
           <p className="text-text-secondary">Data tidak ditemukan</p>
         </div>

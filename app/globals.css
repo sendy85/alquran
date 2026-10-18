@@ -68,12 +68,6 @@ body {
   padding-top: env(safe-area-inset-top);
 }
 
-@supports (padding-top: env(safe-area-inset-top)) {
-  .md-hidden + nav + main {
-    margin-top: -env(safe-area-inset-top);
-  }
-}
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

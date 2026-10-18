@@ -10,7 +10,9 @@ Aplikasi web modern untuk membaca Al-Qur'an 30 Juz lengkap dengan teks Arab dan 
 - **Pengaturan Fleksibel**:
   - Ukuran font Arab dan terjemahan dapat disesuaikan
   - Tampilkan/sembunyikan terjemahan dan transliterasi
-  - Mode terang, gelap, atau ikuti sistem
+  - Tema (terang/gelap) dapat diubah melalui tombol di navbar atau tombol melayang di mobile
+- **Instalasi Aplikasi**:
+  - Pasang aplikasi Al-Qur'an Digital melalui menu Pengaturan
 - **Pencarian Surah**: Filter real-time berdasarkan nama Latin, nama Arab, arti, atau nomor
 - **Salin & Bagikan**: Salin ayat atau bagikan melalui Web Share API
 - **Responsive Design**: Mobile-first, fully responsive dari HP hingga desktop
@@ -167,6 +169,17 @@ Buka [http://localhost:3000](http://localhost:3000) di browser.
 npm run build
 npm start
 ```
+
+### Menguji Pemasangan Aplikasi (PWA)
+
+Untuk menguji fitur "Pasang Sebagai Aplikasi":
+1. Jalankan build produksi: `npm run build` lalu `npm start` (atau via Vercel preview)
+2. Buka [http://localhost:3000](http://localhost:3000) di browser (Chrome / Edge / Safari HP)
+3. Pergi ke menu **Pengaturan** -> tab **Aplikasi**
+4. Klik **Pasang Aplikasi**:
+   - Di Chrome desktop / Android: memicu prompt pemasangan asli browser.
+   - Di Safari iOS: menampilkan petunjuk manual menambah ke layar utama.
+   - Setelah terpasang: kartu menampilkan "Aplikasi sudah terpasang di perangkat ini."
 
 ### Lint & TypeCheck
 

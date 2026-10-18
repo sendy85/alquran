@@ -6,10 +6,11 @@ import { useBookmarks } from '@/hooks/useBookmarks';
 import { useLastRead } from '@/hooks/useLastRead';
 import { ConfirmDialog } from '@/components/ConfirmDialog';
 import { Toast } from '@/components/Toast';
+import { InstallAppCard } from '@/components/InstallAppCard';
 
 const STORAGE_KEYS = ['alquran_settings', 'alquran_bookmarks', 'alquran_last_read'];
 
-type TabType = 'font-size' | 'display' | 'theme' | 'data';
+type TabType = 'font-size' | 'display' | 'app' | 'data';
 
 export default function SettingsPage() {
   const { settings, updateSettings, loaded } = useSettings();
@@ -28,8 +29,12 @@ export default function SettingsPage() {
   useEffect(() => {
     if (!mounted) return;
     const hash = window.location.hash.slice(1);
-    if (['font-size', 'display', 'theme', 'data'].includes(hash)) {
+    if (['font-size', 'display', 'app', 'data'].includes(hash)) {
       setActiveTab(hash as TabType);
+    } else if (hash === 'theme') {
+      // Redirect old #theme to first tab
+      window.history.replaceState(null, '', '#font-size');
+      setActiveTab('font-size');
     }
   }, [mounted]);
 
@@ -66,7 +71,7 @@ export default function SettingsPage() {
         translationFontSize: 15,
         showTranslation: true,
         showTransliteration: false,
-        theme: 'light',
+        theme: 'system',
         autoOpenLastRead: false,
       });
 
@@ -74,7 +79,14 @@ export default function SettingsPage() {
       setToast({ message: 'Data berhasil dihapus.', type: 'success' });
 
       if (typeof window !== 'undefined') {
-        document.documentElement.removeAttribute('data-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (systemDark) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) metaThemeColor.setAttribute('content', systemDark ? '#121816' : '#1B4332');
       }
     } catch (err) {
       console.error('Delete error:', err);
@@ -89,7 +101,7 @@ export default function SettingsPage() {
   const tabs: { id: TabType; label: string }[] = [
     { id: 'font-size', label: 'Ukuran Teks' },
     { id: 'display', label: 'Tampilan' },
-    { id: 'theme', label: 'Tema' },
+    { id: 'app', label: 'Aplikasi' },
     { id: 'data', label: 'Data' },
   ];
 
@@ -205,50 +217,10 @@ export default function SettingsPage() {
             </section>
           )}
 
-          {/* Theme Tab */}
-          {activeTab === 'theme' && (
-            <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-              <h2 className="text-xl font-semibold mb-4">Tema</h2>
-              
-              <div className="space-y-4">
-                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="light"
-                    checked={settings.theme === 'light'}
-                    onChange={(e) => updateSettings({ theme: e.target.value as any })}
-                    className="w-5 h-5 cursor-pointer"
-                  />
-                  <span className="text-sm">Mode Terang</span>
-                </label>
-
-                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="dark"
-                    checked={settings.theme === 'dark'}
-                    onChange={(e) => updateSettings({ theme: e.target.value as any })}
-                    className="w-5 h-5 cursor-pointer"
-                  />
-                  <span className="text-sm">Mode Gelap</span>
-                </label>
-
-                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                  <input
-                    type="radio"
-                    name="theme"
-                    value="system"
-                    checked={settings.theme === 'system'}
-                    onChange={(e) => updateSettings({ theme: e.target.value as any })}
-                    className="w-5 h-5 cursor-pointer"
-                  />
-                  <span className="text-sm">Ikuti Sistem</span>
-                </label>
-              </div>
-            </section>
-          )}
+           {/* App Tab */}
+           {activeTab === 'app' && (
+             <InstallAppCard />
+           )}
 
           {/* Data Tab */}
           {activeTab === 'data' && (

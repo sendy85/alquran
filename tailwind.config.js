@@ -11,6 +11,8 @@ module.exports = {
         surface: 'var(--surface)',
         'surface-low': 'var(--surface-container-low)',
         'surface-lowest': 'var(--surface-container-lowest)',
+        'surface-container-low': 'var(--surface-container-low)',
+        'surface-container-lowest': 'var(--surface-container-lowest)',
         primary: 'var(--primary)',
         'primary-contrast': 'var(--primary-contrast)',
         'secondary-gold': 'var(--secondary-gold)',
