@@ -19,7 +19,7 @@ export function InstallAppCard() {
     setMounted(true);
 
     fetch(APK_URL, { method: 'HEAD' })
-      .then(res => setApkValid(res.ok && res.headers.get('Content-Type') !== 'text/html'))
+      .then(res => setApkValid(res.ok))
       .catch(() => setApkValid(false));
 
     if (typeof window !== 'undefined') {

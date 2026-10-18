@@ -30,19 +30,25 @@ export default function SettingsPage() {
   useEffect(() => {
     if (!mounted) return;
     const hash = window.location.hash.slice(1);
-    if (['font-size', 'display', 'app', 'data'].includes(hash)) {
-      setActiveTab(hash as TabType);
+    const validTabs: TabType[] = ['font-size', 'display', 'app', 'data'];
+    
+    // Normalize app/aplikasi
+    const normalizedHash = hash === 'aplikasi' ? 'app' : hash;
+
+    if (validTabs.includes(normalizedHash as TabType)) {
+      setActiveTab(normalizedHash as TabType);
     } else if (hash === 'theme') {
-      // Redirect old #theme to first tab
       window.history.replaceState(null, '', '#font-size');
       setActiveTab('font-size');
     }
   }, [mounted]);
 
   const handleTabChange = (tab: TabType) => {
+    if (activeTab === tab) return;
     setActiveTab(tab);
-    window.history.replaceState(null, '', `#${tab}`);
+    window.history.replaceState(null, '', `#${tab === 'app' ? 'aplikasi' : tab}`);
   };
+
 
   if (!mounted || !loaded) {
     return (
@@ -218,10 +224,12 @@ export default function SettingsPage() {
             </section>
           )}
 
-            {/* App Tab */}
-            {activeTab === 'app' && (
+          {/* App Tab */}
+          {activeTab === 'app' && (
+            <ErrorBoundary fallback={<div className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">Gagal memuat fitur pemasangan.</div>}>
               <InstallAppCard />
-            )}
+            </ErrorBoundary>
+          )}
 
 
           {/* Data Tab */}

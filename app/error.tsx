@@ -19,7 +19,9 @@ export default function Error({
       <div className="text-center px-4 max-w-md">
         <h1 className="text-4xl font-serif-heading font-bold mb-4">Terjadi Kesalahan</h1>
         <p className="text-text-secondary mb-3">Maaf, terjadi kesalahan saat memuat halaman.</p>
-        <p className="text-sm text-text-tertiary mb-6 break-all">{error.message}</p>
+        {process.env.NODE_ENV === 'development' && (
+          <p className="text-sm text-text-tertiary mb-6 break-all">{error.message}</p>
+        )}
         <div className="flex gap-3 justify-center">
           <button
             onClick={() => reset()}
