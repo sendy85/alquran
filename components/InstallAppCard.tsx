@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Toast } from './Toast';
 import { useInstallPrompt, useInstallPromptActions } from '@/hooks/useInstallPrompt';
-import { APK_URL, APK_FILENAME } from '@/lib/apkConfig';
 
 type Platform = 'ios' | 'android' | 'desktop' | 'inapp' | 'other';
 
@@ -22,16 +21,12 @@ export function InstallAppCard() {
   const [manual, setManual] = useState<Platform | null>(null);
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
-  const [apkValid, setApkValid] = useState<boolean | null>(null);
   
   const { ready, canPrompt, installed } = useInstallPrompt();
   const { promptInstall } = useInstallPromptActions();
 
   useEffect(() => {
     setMounted(true);
-    fetch(APK_URL, { method: 'HEAD' })
-      .then(res => setApkValid(res.ok))
-      .catch(() => setApkValid(false));
   }, []);
 
   async function handleInstall() {
@@ -63,48 +58,36 @@ export function InstallAppCard() {
 
   return (
     <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-      <h2 className="text-xl font-semibold mb-3">Pasang Aplikasi</h2>
+      <h2 className="text-xl font-semibold mb-3">Unduh Aplikasi</h2>
       
       {installed ? (
         <p className="text-sm text-text-secondary font-medium py-2">
           Aplikasi sudah terpasang di perangkat ini.
         </p>
       ) : (
-        <div className="space-y-6">
-          <div className="space-y-4">
-            <h3 className="font-medium">Unduh APK (Android)</h3>
-            {apkValid === false ? (
-              <p className="text-sm text-danger">APK belum tersedia, coba lagi nanti.</p>
-            ) : (
-              <a
-                href={APK_URL}
-                download={APK_FILENAME}
-                className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2"
-              >
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                  <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
-                </svg>
-                Unduh APK
-              </a>
-            )}
-          </div>
+        <div className="space-y-4">
+          <p className="text-sm text-text-secondary leading-relaxed">
+            Tekan tombol di bawah untuk mengunduh dan memasang Al-Qur'an Digital di HP atau komputer Anda. Setelah terpasang, aplikasi bisa dibuka dari layar utama seperti aplikasi biasa, dan halaman yang pernah dibuka tetap bisa dibaca tanpa internet.
+          </p>
+          <p className="text-sm text-text-secondary">
+            Setelah ditekan, akan muncul jendela konfirmasi dari browser. Pilih 'Instal' atau 'Pasang' untuk melanjutkan.
+          </p>
+          <button
+            onClick={handleInstall}
+            disabled={busy}
+            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2 disabled:opacity-50"
+          >
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z" />
+            </svg>
+            {busy ? 'Memproses...' : 'Unduh & Pasang Aplikasi'}
+          </button>
 
-          <div className="border-t border-border-subtle pt-6">
-            <h3 className="font-medium mb-4">Pasang lewat Browser (PWA)</h3>
-            <button
-              onClick={handleInstall}
-              disabled={busy}
-              className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2 disabled:opacity-50"
-            >
-              {busy ? 'Memproses...' : 'Pasang Aplikasi'}
-            </button>
-
-            {manual && (
-              <div className="mt-4 p-4 bg-surface rounded-md border border-border-subtle text-sm text-text-secondary leading-relaxed">
-                {getGuideText()}
-              </div>
-            )}
-          </div>
+          {manual && (
+            <div className="mt-4 p-4 bg-surface rounded-md border border-border-subtle text-sm text-text-secondary leading-relaxed">
+              {getGuideText()}
+            </div>
+          )}
         </div>
       )}
 
