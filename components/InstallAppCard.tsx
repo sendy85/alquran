@@ -1,86 +1,71 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Toast } from './Toast';
 import { useInstallPrompt, useInstallPromptActions } from '@/hooks/useInstallPrompt';
 import { APK_URL, APK_FILENAME } from '@/lib/apkConfig';
 
+type Platform = 'ios' | 'android' | 'desktop' | 'inapp' | 'other';
+
+function detectPlatform(): Platform {
+  if (typeof navigator === 'undefined') return 'other';
+  const ua = navigator.userAgent;
+  if (/FBAN|FBAV|Instagram|Line\/|MicroMessenger|TikTok|BytedanceWebview/i.test(ua)) return 'inapp';
+  if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+  if (/Android/i.test(ua)) return 'android';
+  if (/Windows|Macintosh|Linux/i.test(ua)) return 'desktop';
+  return 'other';
+}
+
 export function InstallAppCard() {
   const [mounted, setMounted] = useState(false);
-  const [showGuide, setShowGuide] = useState(false);
-  const [guideType, setGuideType] = useState<'ios-safari' | 'ios-other' | 'android' | 'desktop' | 'other'>('other');
+  const [manual, setManual] = useState<Platform | null>(null);
+  const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [apkValid, setApkValid] = useState<boolean | null>(null);
   
-  const { isAvailable, isInstalled } = useInstallPrompt();
-  const { triggerInstall } = useInstallPromptActions();
+  const { ready, canPrompt, installed } = useInstallPrompt();
+  const { promptInstall } = useInstallPromptActions();
 
   useEffect(() => {
     setMounted(true);
-
     fetch(APK_URL, { method: 'HEAD' })
       .then(res => setApkValid(res.ok))
       .catch(() => setApkValid(false));
-
-    if (typeof window !== 'undefined') {
-      const ua = navigator.userAgent.toLowerCase();
-      const isIOS = /iphone|ipad|ipod/.test(ua);
-      const isSafari = isIOS && /safari/.test(ua) && !/crios|fxios|opt|edgios/.test(ua);
-
-      if (isIOS) {
-        setGuideType(isSafari ? 'ios-safari' : 'ios-other');
-      } else if (/android/.test(ua)) {
-        setGuideType('android');
-      } else {
-        setGuideType('desktop');
-      }
-    }
   }, []);
 
-  const handleInstallClick = async () => {
-    if (isAvailable) {
-      const outcome = await triggerInstall();
-      if (outcome === 'accepted') {
-        setToast({ message: 'Aplikasi dipasang.', type: 'success' });
-      } else if (outcome === 'dismissed') {
-        setToast({ message: 'Pemasangan dibatalkan.', type: 'error' });
-      } else {
-        setShowGuide(true);
-      }
+  async function handleInstall() {
+    if (busy) return;
+    setBusy(true);
+    const outcome = await promptInstall();
+    setBusy(false);
+    if (outcome === 'accepted') {
+      setToast({ message: 'Aplikasi dipasang.', type: 'success' });
+    } else if (outcome === 'dismissed') {
+      setToast({ message: 'Pemasangan dibatalkan.', type: 'error' });
     } else {
-      setShowGuide((prev) => !prev);
+      setManual(detectPlatform());
     }
-  };
+  }
 
-  const getGuideText = React.useCallback(() => {
-    if (typeof window !== 'undefined') {
-      const ua = navigator.userAgent.toLowerCase();
-      const isInAppBrowser = /fban|fbav|instagram|line|micromessenger|tiktok|bytedancewebview/.test(ua);
-      
-      if (isInAppBrowser) {
-        return 'Buka halaman ini di Chrome atau Safari untuk memasang aplikasi.';
-      }
+  const getGuideText = useCallback(() => {
+    if (!manual) return '';
+    switch (manual) {
+      case 'ios': return 'Ketuk tombol Bagikan di Safari, lalu pilih \'Tambah ke Layar Utama\'.';
+      case 'android': return 'Pemasangan langsung belum tersedia saat ini. Ketuk menu titik tiga di browser, lalu pilih \'Instal aplikasi\'.';
+      case 'desktop': return 'Klik ikon Pasang di ujung kanan bilah alamat browser, atau buka menu browser lalu pilih \'Instal\'.';
+      case 'inapp': return 'Buka halaman ini di Chrome atau Safari untuk memasang aplikasi.';
+      default: return 'Buka menu browser Anda lalu pilih opsi \'Instal\' atau \'Tambahkan ke Layar Utama\'.';
     }
+  }, [manual]);
 
-    switch (guideType) {
-      case 'ios-safari':
-        return 'Ketuk tombol Bagikan di Safari, lalu pilih \'Tambah ke Layar Utama\'.';
-      case 'ios-other':
-        return 'Buka alamat ini di Safari terlebih dulu.';
-      case 'android':
-        return 'Pemasangan langsung belum tersedia saat ini. Ketuk menu titik tiga di browser, lalu pilih \'Instal aplikasi\'.';
-      case 'desktop':
-        return 'Klik ikon Pasang di ujung kanan bilah alamat browser, atau buka menu browser lalu pilih \'Instal\'.';
-      default:
-        return 'Buka menu browser Anda lalu pilih opsi \'Instal\' atau \'Tambahkan ke Layar Utama\'.';
-    }
-  }, [guideType]);
+  if (!mounted) return null;
 
   return (
     <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
       <h2 className="text-xl font-semibold mb-3">Pasang Aplikasi</h2>
       
-      {mounted && (typeof window !== 'undefined' && (window.matchMedia("(display-mode: standalone)").matches || (navigator as any).standalone)) ? (
+      {installed ? (
         <p className="text-sm text-text-secondary font-medium py-2">
           Aplikasi sudah terpasang di perangkat ini.
         </p>
@@ -102,34 +87,21 @@ export function InstallAppCard() {
                 Unduh APK
               </a>
             )}
-            <p className="text-sm text-text-secondary">
-              Setelah terunduh, buka file APK. Jika diminta, izinkan 'Instal dari sumber ini / sumber tidak dikenal' di pengaturan Android, lalu pasang.
-            </p>
           </div>
 
           <div className="border-t border-border-subtle pt-6">
             <h3 className="font-medium mb-4">Pasang lewat Browser (PWA)</h3>
-            {isInstalled ? (
-              <p className="text-sm text-text-secondary font-medium py-2">
-                Aplikasi sudah terpasang di perangkat ini.
-              </p>
-            ) : (
-              <div className="space-y-4">
-                <button
-                  onClick={handleInstallClick}
-                  className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2"
-                >
-                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                    <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9 4v-2h-2v2H5v-2H3v2a2 2 0 002 2h14a2 2 0 002-2z" />
-                  </svg>
-                  Pasang Aplikasi
-                </button>
+            <button
+              onClick={handleInstall}
+              disabled={busy}
+              className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2 disabled:opacity-50"
+            >
+              {busy ? 'Memproses...' : 'Pasang Aplikasi'}
+            </button>
 
-                {mounted && showGuide && (
-                  <div className="p-4 bg-surface rounded-md border border-border-subtle text-sm text-text-secondary leading-relaxed">
-                    {getGuideText()}
-                  </div>
-                )}
+            {manual && (
+              <div className="mt-4 p-4 bg-surface rounded-md border border-border-subtle text-sm text-text-secondary leading-relaxed">
+                {getGuideText()}
               </div>
             )}
           </div>

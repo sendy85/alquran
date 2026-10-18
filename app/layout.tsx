@@ -68,15 +68,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               window.__installPrompt = null;
-              window.__installPromptListeners = [];
               window.addEventListener('beforeinstallprompt', function(e) {
                 e.preventDefault();
                 window.__installPrompt = e;
-                window.__installPromptListeners.forEach(cb => cb());
+                window.dispatchEvent(new Event('installprompt-ready'));
               });
               window.addEventListener('appinstalled', function() {
                 window.__installPrompt = null;
-                window.__installPromptListeners.forEach(cb => cb());
+                window.dispatchEvent(new Event('installprompt-installed'));
               });
             `,
           }}
