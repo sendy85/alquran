@@ -2,46 +2,21 @@
 
 import React, { useEffect, useState } from 'react';
 import { Toast } from './Toast';
-
-interface BeforeInstallPromptEvent extends Event {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
-}
+import { useInstallPrompt, useInstallPromptActions } from '@/hooks/useInstallPrompt';
 
 export function InstallAppCard() {
   const [mounted, setMounted] = useState(false);
-  const [isInstalled, setIsInstalled] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showGuide, setShowGuide] = useState(false);
   const [guideType, setGuideType] = useState<'ios-safari' | 'ios-other' | 'android' | 'desktop' | 'other'>('other');
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  
+  const { isAvailable, isInstalled } = useInstallPrompt();
+  const { triggerInstall } = useInstallPromptActions();
 
   useEffect(() => {
     setMounted(true);
 
     if (typeof window !== 'undefined') {
-      const isStandalone =
-        window.matchMedia('(display-mode: standalone)').matches ||
-        (navigator as any).standalone === true;
-
-      if (isStandalone) {
-        setIsInstalled(true);
-      }
-
-      const handleBeforeInstallPrompt = (e: Event) => {
-        e.preventDefault();
-        setDeferredPrompt(e as BeforeInstallPromptEvent);
-      };
-
-      const handleAppInstalled = () => {
-        setIsInstalled(true);
-        setDeferredPrompt(null);
-        setToast({ message: 'Aplikasi dipasang.', type: 'success' });
-      };
-
-      window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.addEventListener('appinstalled', handleAppInstalled);
-
       const ua = navigator.userAgent.toLowerCase();
       const isIOS = /iphone|ipad|ipod/.test(ua);
       const isSafari = isIOS && /safari/.test(ua) && !/crios|fxios|opt|edgios/.test(ua);
@@ -53,28 +28,17 @@ export function InstallAppCard() {
       } else {
         setGuideType('desktop');
       }
-
-      return () => {
-        window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-        window.removeEventListener('appinstalled', handleAppInstalled);
-      };
     }
   }, []);
 
   const handleInstallClick = async () => {
-    if (deferredPrompt) {
-      try {
-        await deferredPrompt.prompt();
-        const choiceResult = await deferredPrompt.userChoice;
-        if (choiceResult.outcome === 'accepted') {
-          setToast({ message: 'Aplikasi dipasang.', type: 'success' });
-          setIsInstalled(true);
-        } else {
-          setToast({ message: 'Pemasangan dibatalkan.', type: 'error' });
-        }
-        setDeferredPrompt(null);
-      } catch (err) {
-        console.error('Install prompt error:', err);
+    if (isAvailable) {
+      const outcome = await triggerInstall();
+      if (outcome === 'accepted') {
+        setToast({ message: 'Aplikasi dipasang.', type: 'success' });
+      } else if (outcome === 'dismissed') {
+        setToast({ message: 'Pemasangan dibatalkan.', type: 'error' });
+      } else {
         setShowGuide(true);
       }
     } else {
@@ -83,13 +47,22 @@ export function InstallAppCard() {
   };
 
   const getGuideText = () => {
+    if (typeof window !== 'undefined') {
+      const ua = navigator.userAgent.toLowerCase();
+      const isInAppBrowser = /fban|fbav|instagram|line|micromessenger|tiktok|bytedancewebview/.test(ua);
+      
+      if (isInAppBrowser) {
+        return 'Buka halaman ini di Chrome atau Safari untuk memasang aplikasi.';
+      }
+    }
+
     switch (guideType) {
       case 'ios-safari':
         return 'Ketuk tombol Bagikan di Safari, lalu pilih \'Tambah ke Layar Utama\'.';
       case 'ios-other':
         return 'Buka alamat ini di Safari terlebih dulu.';
       case 'android':
-        return 'Ketuk menu titik tiga di browser, lalu pilih \'Instal aplikasi\' atau \'Tambahkan ke layar utama\'.';
+        return 'Pemasangan langsung belum tersedia saat ini. Ketuk menu titik tiga di browser, lalu pilih \'Instal aplikasi\'.';
       case 'desktop':
         return 'Klik ikon Pasang di ujung kanan bilah alamat browser, atau buka menu browser lalu pilih \'Instal\'.';
       default:
@@ -112,8 +85,11 @@ export function InstallAppCard() {
         <div className="space-y-4">
           <button
             onClick={handleInstallClick}
-            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center"
+            className="w-full sm:w-auto min-h-[44px] px-6 py-3 bg-primary text-primary-contrast rounded-md font-medium hover:opacity-90 transition text-sm flex items-center justify-center text-center gap-2"
           >
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm9 4v-2h-2v2H5v-2H3v2a2 2 0 002 2h14a2 2 0 002-2z" />
+            </svg>
             Pasang Aplikasi
           </button>
 

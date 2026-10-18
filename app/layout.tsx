@@ -64,6 +64,23 @@ export default function RootLayout({
             `,
           }}
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.__installPrompt = null;
+              window.__installPromptListeners = [];
+              window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                window.__installPrompt = e;
+                window.__installPromptListeners.forEach(cb => cb('ready'));
+              });
+              window.addEventListener('appinstalled', function() {
+                window.__installPrompt = null;
+                window.__installPromptListeners.forEach(cb => cb('installed'));
+              });
+            `,
+          }}
+        />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
