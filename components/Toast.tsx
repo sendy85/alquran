@@ -31,7 +31,7 @@ export function Toast({ message, type = 'success', duration = 4000, onClose }: T
 
   return (
     <div
-      className={`fixed bottom-24 md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-sm ${bgColor} ${textColor} ${borderColor} border rounded-lg p-4 shadow-lg z-50 animate-in fade-in slide-in-from-bottom-2 duration-300`}
+      className={`fixed bottom-[calc(4.5rem+env(safe-area-inset-bottom))] md:bottom-6 left-4 right-4 md:left-auto md:right-6 md:max-w-sm ${bgColor} ${textColor} ${borderColor} border rounded-lg p-4 shadow-lg z-[80] animate-in fade-in slide-in-from-bottom-2 duration-300`}
       role="status"
       aria-live="polite"
       aria-atomic="true"

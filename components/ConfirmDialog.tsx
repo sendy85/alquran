@@ -86,19 +86,19 @@ export function ConfirmDialog({
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-40 md:block hidden"
+        className="fixed inset-0 bg-black bg-opacity-50 z-[60]"
         onClick={onCancel}
         aria-hidden="true"
       />
 
       {/* Dialog container - responsif */}
       <div
-        className="fixed inset-0 flex items-end md:items-center justify-center z-50"
+        className="fixed inset-0 flex items-end md:items-center justify-center z-[70] p-0 md:p-4"
         role="presentation"
       >
         <div
           ref={dialogRef}
-          className="w-full md:w-auto md:max-w-lg bg-surface-container-lowest rounded-t-2xl md:rounded-xl shadow-lg md:shadow-subtle p-6 md:p-8 max-h-[90vh] md:max-h-none overflow-y-auto md:overflow-visible"
+          className="w-full md:w-[480px] bg-surface-container-lowest rounded-t-2xl md:rounded-xl shadow-lg p-6 md:p-8 max-h-[85dvh] overflow-y-auto"
           role="alertdialog"
           aria-modal="true"
           aria-labelledby="confirm-title"

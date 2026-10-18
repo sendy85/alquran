@@ -9,11 +9,14 @@ import { Toast } from '@/components/Toast';
 
 const STORAGE_KEYS = ['alquran_settings', 'alquran_bookmarks', 'alquran_last_read'];
 
+type TabType = 'font-size' | 'display' | 'theme' | 'data';
+
 export default function SettingsPage() {
   const { settings, updateSettings, loaded } = useSettings();
   const { bookmarks } = useBookmarks();
   const { lastRead } = useLastRead();
   const [mounted, setMounted] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabType>('font-size');
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -21,6 +24,19 @@ export default function SettingsPage() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const hash = window.location.hash.slice(1);
+    if (['font-size', 'display', 'theme', 'data'].includes(hash)) {
+      setActiveTab(hash as TabType);
+    }
+  }, [mounted]);
+
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab);
+    window.history.replaceState(null, '', `#${tab}`);
+  };
 
   if (!mounted || !loaded) {
     return (
@@ -35,7 +51,6 @@ export default function SettingsPage() {
   const handleDeleteAllData = async () => {
     setIsDeleting(true);
     try {
-      // Hapus hanya kunci aplikasi ini
       STORAGE_KEYS.forEach((key) => {
         try {
           localStorage.removeItem(key);
@@ -44,10 +59,8 @@ export default function SettingsPage() {
         }
       });
 
-      // Tunggu sebentar agar DOM update
       await new Promise((resolve) => setTimeout(resolve, 100));
 
-      // Reset ke state awal tanpa reload manual
       updateSettings({
         arabicFontSize: 32,
         translationFontSize: 15,
@@ -60,7 +73,6 @@ export default function SettingsPage() {
       setShowConfirmDialog(false);
       setToast({ message: 'Data berhasil dihapus.', type: 'success' });
 
-      // Force re-render dengan reset tema
       if (typeof window !== 'undefined') {
         document.documentElement.removeAttribute('data-theme');
       }
@@ -74,149 +86,193 @@ export default function SettingsPage() {
 
   const bookmarkCount = bookmarks?.length || 0;
 
+  const tabs: { id: TabType; label: string }[] = [
+    { id: 'font-size', label: 'Ukuran Teks' },
+    { id: 'display', label: 'Tampilan' },
+    { id: 'theme', label: 'Tema' },
+    { id: 'data', label: 'Data' },
+  ];
+
   return (
     <div style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)', paddingBottom: 'calc(5rem + env(safe-area-inset-bottom))' }} className="min-h-screen pt-5 md:pt-20 md:pb-0">
       <div className="max-w-reading-container mx-auto px-4 md:px-8">
-        <header className="mb-8 mt-6">
+        <header className="mb-6 mt-6">
           <h1 className="text-3xl md:text-4xl font-serif-heading font-bold">Pengaturan</h1>
-          <p className="text-text-secondary mt-2">Sesuaikan preferensi membaca Anda</p>
         </header>
 
-        <div className="space-y-8 mb-8">
-          <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-            <h2 className="text-xl font-semibold mb-4">Ukuran Font</h2>
-            
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-text-secondary mb-2">
-                Teks Arab: {settings.arabicFontSize}px
-              </label>
-              <input
-                 type="range"
-                 min="24"
-                 max="42"
-                 value={settings.arabicFontSize}
-                 onChange={(e) => updateSettings({ arabicFontSize: parseInt(e.target.value, 10) })}
-                 className="w-full"
-               />
-              <div className="mt-3 p-3 bg-surface rounded-md">
-                <p className="font-arabic text-center leading-loose" style={{ fontSize: `${settings.arabicFontSize}px` }}>
-                  بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-                </p>
+        {/* Tab bar */}
+        <div className="mb-8 -mx-4 md:mx-0 px-4 md:px-0 overflow-x-auto md:overflow-x-visible md:flex md:gap-2 scroll-snap-type-x-mandatory">
+          <div className="flex gap-2 md:gap-0 md:flex-wrap">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
+                className={`px-4 py-3 text-sm font-medium rounded-md whitespace-nowrap transition scroll-snap-align-start ${
+                  activeTab === tab.id
+                    ? 'bg-primary text-primary-contrast'
+                    : 'bg-surface-container-low text-text-secondary hover:bg-surface-container-lowest'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Tab content */}
+        <div className="space-y-0">
+          {/* Font Size Tab */}
+          {activeTab === 'font-size' && (
+            <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
+              <h2 className="text-xl font-semibold mb-4">Ukuran Font</h2>
+              
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-text-secondary mb-2">
+                  Teks Arab: {settings.arabicFontSize}px
+                </label>
+                <input
+                   type="range"
+                   min="24"
+                   max="42"
+                   value={settings.arabicFontSize}
+                   onChange={(e) => updateSettings({ arabicFontSize: parseInt(e.target.value, 10) })}
+                   className="w-full"
+                />
+                <div className="mt-3 p-3 bg-surface rounded-md">
+                  <p className="font-arabic text-center leading-loose" style={{ fontSize: `${settings.arabicFontSize}px` }}>
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-text-secondary mb-2">
-                Terjemahan: {settings.translationFontSize}px
-              </label>
-              <input
-                type="range"
-                min="13"
-                max="24"
-                value={settings.translationFontSize}
-                onChange={(e) => updateSettings({ translationFontSize: parseInt(e.target.value, 10) })}
-                className="w-full"
-              />
-              <div className="mt-3 p-3 bg-surface rounded-md">
-                <p style={{ fontSize: `${settings.translationFontSize}px` }}>
-                  Dengan nama Allah Yang Maha Pengasih, Maha Penyayang
-                </p>
+              <div>
+                <label className="block text-sm font-medium text-text-secondary mb-2">
+                  Terjemahan: {settings.translationFontSize}px
+                </label>
+                <input
+                  type="range"
+                  min="13"
+                  max="24"
+                  value={settings.translationFontSize}
+                  onChange={(e) => updateSettings({ translationFontSize: parseInt(e.target.value, 10) })}
+                  className="w-full"
+                />
+                <div className="mt-3 p-3 bg-surface rounded-md">
+                  <p style={{ fontSize: `${settings.translationFontSize}px` }}>
+                    Dengan nama Allah Yang Maha Pengasih, Maha Penyayang
+                  </p>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
 
-          <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-            <h2 className="text-xl font-semibold mb-4">Tampilan</h2>
-            
-            <div className="space-y-4">
-               <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                 <input
-                   type="checkbox"
-                   checked={settings.showTranslation}
-                   onChange={(e) => updateSettings({ showTranslation: e.target.checked })}
-                   className="w-5 h-5 cursor-pointer"
-                 />
-                 <span className="text-sm">Tampilkan Terjemahan Bahasa Indonesia</span>
-               </label>
+          {/* Display Tab */}
+          {activeTab === 'display' && (
+            <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
+              <h2 className="text-xl font-semibold mb-4">Tampilan</h2>
+              
+              <div className="space-y-4">
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
+                  <input
+                    type="checkbox"
+                    checked={settings.showTranslation}
+                    onChange={(e) => updateSettings({ showTranslation: e.target.checked })}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="text-sm">Tampilkan Terjemahan Bahasa Indonesia</span>
+                </label>
 
-               <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                 <input
-                   type="checkbox"
-                   checked={settings.showTransliteration}
-                   onChange={(e) => updateSettings({ showTransliteration: e.target.checked })}
-                   className="w-5 h-5 cursor-pointer"
-                 />
-                 <span className="text-sm">Tampilkan Transliterasi Latin</span>
-               </label>
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
+                  <input
+                    type="checkbox"
+                    checked={settings.showTransliteration}
+                    onChange={(e) => updateSettings({ showTransliteration: e.target.checked })}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="text-sm">Tampilkan Transliterasi Latin</span>
+                </label>
 
-               <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                 <input
-                   type="checkbox"
-                   checked={settings.autoOpenLastRead}
-                   onChange={(e) => updateSettings({ autoOpenLastRead: e.target.checked })}
-                   className="w-5 h-5 cursor-pointer"
-                 />
-                 <span className="text-sm">Buka otomatis ke bacaan terakhir saat web dibuka</span>
-               </label>
-             </div>
-          </section>
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
+                  <input
+                    type="checkbox"
+                    checked={settings.autoOpenLastRead}
+                    onChange={(e) => updateSettings({ autoOpenLastRead: e.target.checked })}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="text-sm">Buka otomatis ke bacaan terakhir saat web dibuka</span>
+                </label>
+              </div>
+            </section>
+          )}
 
-          <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-            <h2 className="text-xl font-semibold mb-4">Tema</h2>
-            
-            <div className="space-y-4">
-               <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                 <input
-                   type="radio"
-                   name="theme"
-                   value="light"
-                   checked={settings.theme === 'light'}
-                   onChange={(e) => updateSettings({ theme: e.target.value as any })}
-                   className="w-5 h-5 cursor-pointer"
-                 />
-                 <span className="text-sm">Mode Terang</span>
-               </label>
+          {/* Theme Tab */}
+          {activeTab === 'theme' && (
+            <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
+              <h2 className="text-xl font-semibold mb-4">Tema</h2>
+              
+              <div className="space-y-4">
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
+                  <input
+                    type="radio"
+                    name="theme"
+                    value="light"
+                    checked={settings.theme === 'light'}
+                    onChange={(e) => updateSettings({ theme: e.target.value as any })}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="text-sm">Mode Terang</span>
+                </label>
 
-               <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                 <input
-                   type="radio"
-                   name="theme"
-                   value="dark"
-                   checked={settings.theme === 'dark'}
-                   onChange={(e) => updateSettings({ theme: e.target.value as any })}
-                   className="w-5 h-5 cursor-pointer"
-                 />
-                 <span className="text-sm">Mode Gelap</span>
-               </label>
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
+                  <input
+                    type="radio"
+                    name="theme"
+                    value="dark"
+                    checked={settings.theme === 'dark'}
+                    onChange={(e) => updateSettings({ theme: e.target.value as any })}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="text-sm">Mode Gelap</span>
+                </label>
 
-               <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
-                 <input
-                   type="radio"
-                   name="theme"
-                   value="system"
-                   checked={settings.theme === 'system'}
-                   onChange={(e) => updateSettings({ theme: e.target.value as any })}
-                   className="w-5 h-5 cursor-pointer"
-                 />
-                 <span className="text-sm">Ikuti Sistem</span>
-               </label>
-             </div>
-          </section>
+                <label className="flex items-center gap-3 cursor-pointer p-2 hover:bg-surface rounded-md transition">
+                  <input
+                    type="radio"
+                    name="theme"
+                    value="system"
+                    checked={settings.theme === 'system'}
+                    onChange={(e) => updateSettings({ theme: e.target.value as any })}
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <span className="text-sm">Ikuti Sistem</span>
+                </label>
+              </div>
+            </section>
+          )}
 
-           <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
-             <h2 className="text-xl font-semibold mb-4">Tentang & Penyimpanan</h2>
-             <p className="text-sm text-text-secondary mb-3">
-               Semua pengaturan dan bookmark disimpan secara lokal di perangkat Anda menggunakan localStorage. Data tidak dikirim ke server mana pun.
-             </p>
-             <button
-               onClick={() => setShowConfirmDialog(true)}
-               disabled={isDeleting}
-               className="px-4 py-2 bg-danger hover:opacity-90 transition text-white rounded-md text-sm font-medium disabled:opacity-50"
-               style={{ backgroundColor: 'var(--danger)' }}
-             >
-               {isDeleting ? 'Menghapus...' : 'Hapus Semua Data'}
-             </button>
-           </section>
+          {/* Data Tab */}
+          {activeTab === 'data' && (
+            <section className="p-6 bg-surface-container-lowest rounded-lg border border-border-subtle">
+              <h2 className="text-xl font-semibold mb-4">Data Tersimpan di Perangkat Ini</h2>
+              <p className="text-sm text-text-secondary mb-2">
+                Pengaturan tampilan, penanda ayat (bookmark), dan bacaan terakhir Anda disimpan di perangkat ini saja. Data tidak dikirim ke mana pun dan tidak perlu akun.
+              </p>
+              <p className="text-sm text-text-secondary mb-4">
+                Karena itu, data tidak ikut berpindah ke HP atau komputer lain. Data juga bisa hilang jika Anda menghapus data atau riwayat browser, atau membuka lewat mode penyamaran (incognito).
+              </p>
+              <button
+                onClick={() => setShowConfirmDialog(true)}
+                disabled={isDeleting}
+                className="px-4 py-2 bg-danger hover:opacity-90 transition text-white rounded-md text-sm font-medium disabled:opacity-50"
+                style={{ backgroundColor: 'var(--danger)' }}
+              >
+                {isDeleting ? 'Menghapus...' : 'Hapus Semua Data'}
+              </button>
+              <p className="text-xs text-text-tertiary mt-2">
+                Tombol ini menghapus semua pengaturan, penanda ayat, dan bacaan terakhir dari perangkat ini. Tindakan ini tidak bisa dibatalkan.
+              </p>
+            </section>
+          )}
         </div>
       </div>
 

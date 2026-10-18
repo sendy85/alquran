@@ -53,6 +53,7 @@
 html {
   color-scheme: light;
   background-color: #F5F2EB;
+  scroll-padding-top: 5rem;
 }
 
 html[data-theme="dark"] {
@@ -63,4 +64,5 @@ html[data-theme="dark"] {
 body {
   background-color: var(--surface);
   color: var(--text-primary);
+  min-height: 100dvh;
 }
